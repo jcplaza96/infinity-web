@@ -7,3 +7,9 @@
     -o-background-size: cover;
     background-size: cover;
   }
+
+.carousel-caption {
+  transform: translateY(-50%);
+  bottom: 0;
+  top: 50%;
+}
