@@ -12,7 +12,7 @@ export class ListItemComponent implements OnInit {
   description: String = '';
 
   constructor() {
-    this.imagen = 'http://www.decentfashion.in/wp-content/uploads/2018/09/feelirung-sad-images-8-300x270.gif';
+    this.imagen = 'https://e.radio-studio92.io/normal/2018/05/15/080108_610158.jpg';
     this.title = 'Título';
     this.description = 'Lorem ipsum dolor sit amet consecteturs';
    }
