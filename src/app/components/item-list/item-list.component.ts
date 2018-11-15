@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListItemComponent } from '../list-item/list-item.component';
 
 @Component({
   selector: 'app-item-list',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListComponent implements OnInit {
 
-  constructor() { }
+  items: any[] = [];
+
+  constructor() {
+    for (let index = 0; index < 10; index++) {
+      this.items.push(new ListItemComponent());
+    }
+   }
 
   ngOnInit() {
   }
