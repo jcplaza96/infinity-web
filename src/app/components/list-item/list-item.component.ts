@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
+  imagen: String = 'http://www.decentfashion.in/wp-content/uploads/2018/09/feelirung-sad-images-8-300x270.gif';
+  title: String = 'Título';
+  description: String = 'Lorem ipsum dolor sit amet consecteturs';
+
   constructor() { }
 
   ngOnInit() {
