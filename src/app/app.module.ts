@@ -9,9 +9,10 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SliderIndexComponent } from './components/slider-index/slider-index.component';
+import { PlantillaContenidoComponent } from './components/plantilla-contenido/plantilla-contenido.component';
 
 const routes: Routes = [
-  { path: 'nosotros', component: ItemListComponent },
+  { path: 'contenido', component: PlantillaContenidoComponent },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
@@ -24,7 +25,8 @@ const routes: Routes = [
     NavBarComponent,
     ItemListComponent,
     FooterComponent,
-    SliderIndexComponent
+    SliderIndexComponent,
+    PlantillaContenidoComponent
   ],
   imports: [
     BrowserModule,
