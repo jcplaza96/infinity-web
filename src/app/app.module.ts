@@ -9,6 +9,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SliderIndexComponent } from './components/slider-index/slider-index.component';
+import { OfertasSliderComponent } from './components/ofertas-slider/ofertas-slider.component';
 import { PlantillaContenidoComponent } from './components/plantilla-contenido/plantilla-contenido.component';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     ItemListComponent,
     FooterComponent,
     SliderIndexComponent,
+    OfertasSliderComponent,
     PlantillaContenidoComponent
   ],
   imports: [
