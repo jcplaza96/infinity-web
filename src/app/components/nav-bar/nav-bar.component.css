@@ -7,3 +7,10 @@
   .navbar-dark.scrolled{
     background-color: rgba(0, 0, 0, 1) !important;
   }
+
+  @media screen and (max-width: 600px) {
+    .navbar-dark {
+      background-color: rgba(0, 0, 0, 1) !important;
+      border-radius: 0%;
+    }
+  }
