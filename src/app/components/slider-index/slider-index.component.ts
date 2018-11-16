@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slider-index.component.css']
 })
 export class SliderIndexComponent implements OnInit {
+  ofertas:any[]=[];
 
   constructor() { }
 
