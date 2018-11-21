@@ -4,10 +4,8 @@
     background-image: url('/assets/img/bannerDeporte.png') !important;
     min-height: 188px !important;
     max-height: 220px;
-    position: relative;
 }
 
-#container {
-    position: absolute;
-    bottom: 20%;
+.container {
+    transform: translatey(-200%)
   }

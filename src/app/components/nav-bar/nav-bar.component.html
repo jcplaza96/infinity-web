@@ -8,17 +8,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" data-toggle="collapse" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/contenido']">Contenido</a>
+        <a class="nav-link" data-toggle="collapse" [routerLink]="['/contenido']">Contenido</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/contacto']">Contacto</a>
+        <a class="nav-link" data-toggle="collapse" [routerLink]="['/contacto']">Contacto</a>
       </li>
     </ul>
-    <div class="form-inline my-2 my-lg-0">
-      <button class="btn btn-danger mr-2 my-2 my-sm-0" data-toggle="modal" data-target="#modalLoginForm" >Login</button>
+    <div class="form-inline my-2 my-lg-0 d-flex">
+      <button class="btn btn-danger mr-2 my-2 my-sm-0 ml-auto" data-toggle="modal" data-target="#modalLoginForm" >Login</button>
       <button class="btn btn-danger my-2 my-sm-0" data-toggle="modal" data-target="#modalSignInForm" >Sign in</button>
     </div>
   </div>
@@ -95,3 +95,4 @@
   </div>
 </div>
 <!--Fin ventana emergente de registro-->
+

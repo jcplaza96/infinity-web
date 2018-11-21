@@ -9,7 +9,6 @@ import { HostListener, Inject } from "@angular/core";
 export class NavBarComponent implements OnInit {
 
   scrolled:boolean = false;
-
   constructor() { }
 
   ngOnInit() {
