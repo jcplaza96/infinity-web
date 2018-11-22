@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.texto-descripcion{
+    font-family: 'Open Sans', sans-serif;
+}
+.texto-titulo{
+    font-family: 'Anton', sans-serif;
+}
+
+.texto-subtitulos{
+    font-family: 'Lato', sans-serif;
+
+}
