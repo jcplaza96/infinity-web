@@ -7,8 +7,12 @@
     background-color: rgba(0, 0, 0, 1) !important;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 992px) {
     .navbar-dark {
       background-color: rgba(0, 0, 0, 1) !important;
     }
   }
+
+  .nav-item{
+    text-align: right;
+}
