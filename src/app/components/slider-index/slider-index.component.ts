@@ -7,11 +7,12 @@ import { OfertasSliderComponent } from '../ofertas-slider/ofertas-slider.compone
   styleUrls: ['./slider-index.component.css']
 })
 export class SliderIndexComponent implements OnInit {
-  ofertas:any[]=[];
+  ofertas:OfertasSliderComponent[]=[];
 
   constructor() { 
     for (let index = 0; index < 2; index++) {
-      this.ofertas.push(new OfertasSliderComponent());
+      this.ofertas[index]=(new OfertasSliderComponent());
+      this.ofertas[index].ofertasUrl="/assets/img/slider-"+(index+1)+".jpg";
     }
   }
 
