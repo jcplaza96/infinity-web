@@ -4,7 +4,7 @@ import { OfertasSliderComponent } from '../ofertas-slider/ofertas-slider.compone
 @Component({
   selector: 'app-slider-index',
   templateUrl: './slider-index.component.html',
-  styleUrls: ['./slider-index.component.css']
+  styleUrls: ['./slider-index.component.scss']
 })
 export class SliderIndexComponent implements OnInit {
   ofertas:OfertasSliderComponent[]=[];
