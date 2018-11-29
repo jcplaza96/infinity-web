@@ -11,9 +11,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SliderIndexComponent } from './components/slider-index/slider-index.component';
 import { OfertasSliderComponent } from './components/ofertas-slider/ofertas-slider.component';
 import { PlantillaContenidoComponent } from './components/plantilla-contenido/plantilla-contenido.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 const routes: Routes = [
   { path: 'contenido', component: PlantillaContenidoComponent },
+  { path: 'contacto', component: ContactoComponent },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
@@ -28,7 +30,8 @@ const routes: Routes = [
     FooterComponent,
     SliderIndexComponent,
     OfertasSliderComponent,
-    PlantillaContenidoComponent
+    PlantillaContenidoComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

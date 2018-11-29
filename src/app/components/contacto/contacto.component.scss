@@ -1,0 +1,59 @@
+/*Código de página de contacto*/
+
+#contacto{
+    /*background-color: #70c3be;*/
+    /*letter-spacing: 2px;*/
+    }
+  
+  @media (max-width: 575.98px) {
+  
+    #contacto {
+      padding-bottom: 30px;
+      padding-top: 80px;
+    }
+
+    #contacto .maps iframe{
+      width: 85%;
+      height: 250px;
+    }
+   }
+  
+  
+  @media (min-width: 576px) {
+  
+    #contacto {
+      padding-bottom: 30px;
+      padding-top: 80px;
+    }
+  
+     #contacto .maps iframe{
+       width: 85%;
+       height: 250px;
+       
+     }
+   }
+  
+  @media (min-width: 768px) {
+  
+    #contacto {
+      padding-bottom: 40px;
+      padding-top: 80px;
+    }
+  
+    #contacto .maps iframe{
+      width: 85%;
+      height: 350px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    #contacto {
+      padding-bottom: 50px;
+      padding-top: 80px;
+    }
+  
+     #contacto .maps iframe{
+       width: 85%;
+       height: 500px;
+     }
+  }
