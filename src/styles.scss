@@ -1,12 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-.texto-descripcion{
+@import "assets/scss/variables.scss";
+
+.texto-descripcion,p{
     font-family: 'Open Sans', sans-serif;
+    color: $letras;
 }
-.texto-titulo{
+.texto-titulo, h1,h2,h3{
     font-family: 'Anton', sans-serif;
+    letter-spacing: 3px;
+    color: $letras;
 }
 
-.texto-subtitulos{
+.texto-subtitulos, h4,h5,h6{
     font-family: 'Lato', sans-serif;
+    color: $letras !important;
 
+}
+
+.btn-danger{
+    background-color: $color_boton !important;
+}
+
+.text-white{
+    color: $color_letras !important; 
+}
+
+.slider{
+    color: $color_titulo_slider;
 }
