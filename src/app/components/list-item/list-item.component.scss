@@ -1,0 +1,7 @@
+@import "../../../assets/scss/variables.scss";
+
+@media (max-width: 991px) {
+    .sched .bg-image, .blog .bg-image {
+      height: 200px;
+    }
+  }
