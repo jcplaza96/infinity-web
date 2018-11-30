@@ -1,3 +1,4 @@
+@import "../../../assets/scss/variables.scss";
 /*Código de página de contacto*/
   
 @media (max-width: 575.98px) {
@@ -51,3 +52,8 @@
         height: 500px;
     }
 }
+
+
+i{
+    color: $enlaces;
+  }
