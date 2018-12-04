@@ -10,14 +10,10 @@ declare let $:any;
 })
 export class NavBarComponent implements OnInit {
 
-<<<<<<< HEAD
   scrolled:boolean = false;
   showMenu:boolean = false;
 
 
-=======
-  scrolled = false;
->>>>>>> ce6b63960d1ab4d2077a7279e94140cbdb85f86f
   constructor() { }
 
   ngOnInit() {
