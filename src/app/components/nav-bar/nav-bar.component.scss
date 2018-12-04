@@ -1,0 +1,25 @@
+@import "../../../assets/scss/variables.scss";
+
+.navbar-dark{
+    transition:500ms ease;
+    background-color: $fondo_footer !important;
+   // background-color: rgba(0, 0, 0, 0.4) !important;
+    
+  }
+  .navbar-dark.scrolled{
+    background-color: $fondo_footer /*rgba(0, 0, 0, 1)*/ !important;
+  }
+
+  @media screen and (max-width: 992px) {
+    .navbar-dark {
+      background-color: $fondo_footer/*rgba(0, 0, 0, 1)*/ !important;
+    }
+  }
+
+  .nav-item{
+    text-align: right;
+  }
+
+  .nav-link{
+    color: $color_letras !important; 
+  }
