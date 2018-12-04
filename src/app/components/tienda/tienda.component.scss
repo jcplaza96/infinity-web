@@ -1,0 +1,13 @@
+@import "../../../assets/scss/variables.scss";
+
+#header{
+    height: 35vh;
+    background-size: cover !important;
+    background-image: url('/assets/img/bannerDeporte.png') !important;
+    min-height: 188px !important;
+    max-height: 220px;
+}
+
+.container {
+    transform: translatey(-200%)
+  }
