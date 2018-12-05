@@ -2,6 +2,7 @@
 <aside class="side-menu__container" [ngClass]="{'side-menu__container-active': showMenu}" (click)="toggleMenu()">
   <nav class="slide-menu" [ngClass]="{'slide-menu-active': showMenu}" (click)="$event.stopImmediatePropagation();">
       <section class="menu-header">
+        <a class="navbar-brand ml-3 justify-content-center" href="#"><img src="/assets/img/LOGO_BLANCO.png" width="50px"></a>
         <span class="greeting__text">Menu</span>
       </section>
       <section class="menu-body" (click)="toggleMenu()">
@@ -88,7 +89,7 @@
 
       </div>
       <form class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-success">Login</button>
+        <button class="btn btn-danger">Login</button>
       </form>
     </div>
   </div>
@@ -126,7 +127,7 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-success">Sign up</button>
+        <button class="btn btn-danger">Sign up</button>
       </div>
     </div>
   </div>
