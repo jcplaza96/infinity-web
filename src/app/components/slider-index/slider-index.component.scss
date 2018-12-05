@@ -1,5 +1,6 @@
 @import "../../../assets/scss/variables.scss";
 
+//tamaño slider
 .carousel-item {
     height: 100vh;
     min-height: 300px;
@@ -10,6 +11,7 @@
     background-size: cover;
   }
 
+//animacion slider
 .carousel-caption {
   transform: translateY(-50%);
   bottom: 0;
