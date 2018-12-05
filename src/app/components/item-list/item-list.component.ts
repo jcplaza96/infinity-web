@@ -11,7 +11,7 @@ export class ItemListComponent implements OnInit {
   items: any[] = [];
 
   constructor() {
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 5; index++) {
       this.items.push(new ListItemComponent());
     }
    }

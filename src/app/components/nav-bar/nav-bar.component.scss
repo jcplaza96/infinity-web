@@ -150,3 +150,15 @@
 .profile__image {
   max-width: 4rem;
 }
+
+
+//-----------Dropdown Styles----------//
+.dropdown-menu, .dropdown-item{
+  background-color: $fondo_footer !important;
+  color: $color_letras !important;
+}
+
+.dropdown-item:hover{
+  background-color: $fondo !important;
+  color: $letras !important;
+}
