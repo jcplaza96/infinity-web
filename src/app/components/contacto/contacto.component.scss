@@ -1,5 +1,10 @@
 @import "../../../assets/scss/variables.scss";
-/*Código de página de contacto*/
+
+/* Se ajustan los diferentes tamaños de pantalla de dispositivos */
+
+.container-fluid {
+    background-color: #e8e8e7 !important;
+}
   
 @media (max-width: 575.98px) {
 
