@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlquilerComponent implements OnInit {
 
+  id: string = "alquiler";
   constructor() { }
 
   ngOnInit() {

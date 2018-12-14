@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticiasComponent implements OnInit {
 
+  id: string = "noticias";
+
+
   constructor() { }
 
   ngOnInit() {

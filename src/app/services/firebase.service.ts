@@ -14,11 +14,21 @@ export class FirebaseService {
   items: Observable<Item[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.valueChanges();
+    //this.itemsCollection = this.afs.collection<Item>('items');
+  }
+  
+
+
+
+
+
+  listaItem(item: string){
+    this.itemsCollection = this.afs.collection<Item>(item);
+    return this.itemsCollection.valueChanges();
    }
 
-   listaItem(){
-     return this.items;
-   }
+  getNoticias(){
+    this.itemsCollection = this.afs.collection<Item>('noticias');
+    return this.itemsCollection.valueChanges();
+  }
 }
