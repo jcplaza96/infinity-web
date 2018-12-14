@@ -23,6 +23,11 @@ export class ItemListComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.conexion.listaItem().subscribe(item =>{
+      this.items = item;
+      console.log(this.items);
+    })
+    console.log(this.items);
   }
 
 }
