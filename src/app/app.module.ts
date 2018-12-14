@@ -4,6 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
+
+/**
+ * BBDD Imports
+ */
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FirebaseService } from './services/firebase.service';
+
+/**
+ * Custom components import
+ */
+
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
@@ -16,6 +32,12 @@ import { AlquilerComponent } from './components/alquiler/alquiler.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { NuestrasInstalacionesComponent } from './components/nuestras-instalaciones/nuestras-instalaciones.component';
+
+
+
+
+
+
 
 const routes: Routes = [
   { path: 'contenido', component: PlantillaContenidoComponent },
@@ -43,14 +65,18 @@ const routes: Routes = [
     AlquilerComponent,
     TiendaComponent,
     NoticiasComponent,
-    NuestrasInstalacionesComponent
+    NuestrasInstalacionesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
-  providers: [],
+  providers: [ FirebaseService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
+export interface Item { description: string, imagen: string, tittle: string }
 
 
 @Injectable({
@@ -9,6 +10,15 @@ import { map } from 'rxjs/operators';
 })
 export class FirebaseService {
 
-  constructor(
-  ) { }
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<Item[]>;
+
+  constructor(private afs: AngularFirestore) {
+    this.itemsCollection = afs.collection<Item>('items');
+    this.items = this.itemsCollection.valueChanges();
+   }
+
+   listaItem(){
+     return this.items;
+   }
 }
