@@ -1,5 +1,11 @@
 @import "../../../assets/scss/variables.scss";
 
+img {
+  width: 270px;
+  height: 239px;
+}
+
+
 @media (max-width: 991px) {
     .sched .bg-image, .blog .bg-image {
       height: 200px;
