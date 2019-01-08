@@ -163,3 +163,8 @@
   background-color: $fondo !important;
   color: $letras !important;
 }
+
+.dropdown-container{
+  transition: transform 300ms linear;
+  will-change: transform;
+}

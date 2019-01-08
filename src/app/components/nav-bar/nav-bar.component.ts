@@ -12,6 +12,7 @@ export class NavBarComponent implements OnInit {
 
   scrolled:boolean = false;
   showMenu:boolean = false;
+  showDropDown:boolean = false;
 
 
   constructor() { }
@@ -22,6 +23,10 @@ export class NavBarComponent implements OnInit {
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
+  }
+
+  toggleDropDown() {
+    this.showDropDown = !this.showDropDown;
   }
 
   @HostListener('window:scroll', [])
