@@ -57,22 +57,14 @@ export class FernandoComponent implements OnInit {
         if(!this.won){
 
             console.clear();
-            //        console.log("x Raton: "+ (e.x - document.getElementById("canvas").offsetLeft));
-            //        console.log("y Raton: "+ (e.y - document.getElementById("canvas").offsetTop));
             let xRatonCanvas = (e.x - document.getElementById("canvas").offsetLeft);
             let yRatonCanvas = (e.y - document.getElementById("canvas").offsetTop);
-            console.log("x Cubo: "+this.x);
-            console.log("y Cubo: "+this.y);
             if( (xRatonCanvas > this.x && xRatonCanvas < this.x +20) && (yRatonCanvas > this.y && yRatonCanvas < this.y + 20)){
                 this.rmCirc(this.ctx);
                 this.drawCirc(this.ctx);
                 this.count = this.count + 1;
                 document.getElementById("counter").innerHTML = this.count+"";
             }
-            
-            //            console.log(document.getElementById("canvas").offsetTop);
-            //            console.log(document.getElementById("container").offsetLeft);
-            console.log(this.count);
             if(this.count == this.TO_WIN){
                 this.won = true;
                 this.rmCirc(this.ctx);   
@@ -81,10 +73,6 @@ export class FernandoComponent implements OnInit {
                 
         }
 
-    }
-
-    test(event: MouseEvent) {
-        console.log(event.x);
     }
 
     getRandomArbitrary(min, max) {
