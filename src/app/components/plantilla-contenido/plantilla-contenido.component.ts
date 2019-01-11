@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlantillaContenidoComponent implements OnInit {
   
+  id: string = "items";
+
   constructor() { }
 
   ngOnInit() {

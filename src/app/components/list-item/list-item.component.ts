@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list-item',
@@ -7,14 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
-  imagen: String = '';
-  title: String = '';
-  description: String = '';
+  @Input() imagen: string;
+  @Input() tittle: string;
+  @Input() description: string;
 
   constructor() {
-    this.imagen = 'https://www.eoi.es/blogs/madeon/files/2013/05/Capacitacion.png';
-    this.title = 'Título';
-    this.description = 'Lorem ipsum dolor sit amet consecteturs';
   }
 
   ngOnInit() {
