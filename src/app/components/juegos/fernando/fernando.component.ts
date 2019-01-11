@@ -12,8 +12,11 @@ export class FernandoComponent implements OnInit {
 
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D ;
+    TO_WIN: number = 10;
     x: number;
     y: number;
+    count: number = 0;
+    won: boolean = false;
     constructor(public elmRef: ElementRef) {
         
         
@@ -33,8 +36,15 @@ export class FernandoComponent implements OnInit {
     }
 
     drawCirc(ctx:CanvasRenderingContext2D) {
-        this.x = this.getRandomArbitrary(0,400);
-        this.y = this.getRandomArbitrary(0,400);
+        let ok: boolean = false;
+        while (!ok) {
+            this.x = this.getRandomArbitrary(0,400);
+            this.y = this.getRandomArbitrary(0,400);
+            
+            if((this.x > 0 && this.x < 380) && (this.y > 0 && this.y < 380))
+                ok = true;
+            
+        }
         ctx.fillRect(this.x,this.y,20,20);
     }
     rmCirc(ctx:CanvasRenderingContext2D) {
@@ -44,26 +54,32 @@ export class FernandoComponent implements OnInit {
     }
 
     game(e: MouseEvent){
+        if(!this.won){
 
-        console.clear();
-        console.log("x Raton: "+ (e.x - document.getElementById("canvas").offsetLeft));
-        console.log("y Raton: "+ (e.y - document.getElementById("canvas").offsetTop));
-        let xRatonCanvas = (e.x - document.getElementById("canvas").offsetLeft);
-        let yRatonCanvas = (e.y - document.getElementById("canvas").offsetTop);
-        console.log("x Cubo: "+this.x);
-        console.log("y Cubo: "+this.y);
-        if( (xRatonCanvas > this.x && xRatonCanvas < this.x +20) && (yRatonCanvas > this.y && yRatonCanvas < this.y + 20)){
-            this.rmCirc(this.ctx);
-            this.drawCirc(this.ctx);
+            console.clear();
+            //        console.log("x Raton: "+ (e.x - document.getElementById("canvas").offsetLeft));
+            //        console.log("y Raton: "+ (e.y - document.getElementById("canvas").offsetTop));
+            let xRatonCanvas = (e.x - document.getElementById("canvas").offsetLeft);
+            let yRatonCanvas = (e.y - document.getElementById("canvas").offsetTop);
+            console.log("x Cubo: "+this.x);
+            console.log("y Cubo: "+this.y);
+            if( (xRatonCanvas > this.x && xRatonCanvas < this.x +20) && (yRatonCanvas > this.y && yRatonCanvas < this.y + 20)){
+                this.rmCirc(this.ctx);
+                this.drawCirc(this.ctx);
+                this.count = this.count + 1;
+                document.getElementById("counter").innerHTML = this.count+"";
+            }
+            
+            //            console.log(document.getElementById("canvas").offsetTop);
+            //            console.log(document.getElementById("container").offsetLeft);
+            console.log(this.count);
+            if(this.count == this.TO_WIN){
+                this.won = true;
+                this.rmCirc(this.ctx);   
+                document.getElementById("p").innerHTML = "Has ganado";
+            }
+                
         }
-    
-            console.log(document.getElementById("canvas").offsetTop);
-            console.log(document.getElementById("container").offsetLeft);
-        }
-
-    checkCollision(e: MouseEvent){
-
-
 
     }
 
