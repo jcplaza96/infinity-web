@@ -32,6 +32,7 @@ import { AlquilerComponent } from './components/alquiler/alquiler.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { NuestrasInstalacionesComponent } from './components/nuestras-instalaciones/nuestras-instalaciones.component';
+import { JavierComponent } from './components/juegos/javier/javier.component';
 import { FernandoComponent } from './components/juegos/fernando/fernando.component';
 
 
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'alquiler', component: AlquilerComponent },
   { path: 'noticias', component: NoticiasComponent },
   { path: 'nuestras_instalaciones', component: NuestrasInstalacionesComponent },
+  { path: 'javier', component: JavierComponent },
   { path: 'fgame', component: FernandoComponent },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
@@ -68,6 +70,7 @@ const routes: Routes = [
     TiendaComponent,
     NoticiasComponent,
     NuestrasInstalacionesComponent,
+    JavierComponent,
     FernandoComponent,
   ],
   imports: [
