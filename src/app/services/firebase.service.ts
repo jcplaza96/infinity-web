@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item { description: string, imagen: string, tittle: string }
+export interface Item { description: string, image: string, tittle: string }
 
 
 @Injectable({
@@ -27,8 +27,10 @@ export class FirebaseService {
     return this.itemsCollection.valueChanges();
    }
 
-  getNoticias(){
-    this.itemsCollection = this.afs.collection<Item>('noticias');
-    return this.itemsCollection.valueChanges();
+  addItem(id: string, item: Item){
+    this.itemsCollection = this.afs.collection<Item>(id);
+    this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle})
+
   }
+  
 }
