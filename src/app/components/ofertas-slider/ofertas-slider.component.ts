@@ -8,14 +8,12 @@ import { Component, OnInit, Input, Injectable } from '@angular/core';
 
 export class OfertasSliderComponent implements OnInit {
 
-  title: String = '';
-  description: String = '';
-  ofertasUrl: String ='';
-
+  @Input() tittle: string;
+  @Input() description: string;
+  @Input() image: string;
+  
   constructor() {
-    this.title = 'Título';
-    this.description = 'Description about slider';
-    this.ofertasUrl = "/assets/img/slider-1.jpg";
+    
   }
 
   ngOnInit() {
