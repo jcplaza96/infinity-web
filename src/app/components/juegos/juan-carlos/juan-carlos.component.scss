@@ -1,0 +1,14 @@
+@import "../../../../assets/scss/variables.scss";
+
+#miCanvas{
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px $fondo_footer;
+    background: $fondo_footer;
+}
+
+div{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}

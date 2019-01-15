@@ -73,9 +73,9 @@ footer{
 
   }
 
-  #easter{
+  .easter{
     cursor: text ;
-    color: $fondo_footer;
+    color: $fondo_footer !important;
   }
 
   .footer-info a:hover {
