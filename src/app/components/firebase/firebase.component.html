@@ -6,10 +6,11 @@
                             <option value="ninstalaciones">Instalaciones</option>
                             <option value="noticias">Noticias</option>
                             <option value="tienda">Tienda</option>
+                            <option value="cursos">Cursos</option>
                           </select> <br>
     <label>Título</label><input type="text" #tittle> <br>
     <label>Imagen</label><input type="text" #imagen>  <br>
-    <label>Descripción</label><input type="text" #description> <br>
+    <label>Descripción</label><textarea rows="4" cols="50" type="text" #description></textarea> <br>
   </form>
   <button (click)="addItem(section.value,tittle.value,imagen.value,description.value)" class="mt-5" false>Crear nuevo</button>
   
