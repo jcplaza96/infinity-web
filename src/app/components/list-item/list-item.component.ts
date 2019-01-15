@@ -22,7 +22,7 @@ export class ListItemComponent implements OnInit {
     for (let index = 0; index < 13 && desc[index] != null; index++) {
       this.shortDescription = this.shortDescription.concat(desc[index] + " ");
     }
-    this.shortDescription = this.shortDescription.concat("...");
+    if(desc.length > 13) this.shortDescription = this.shortDescription.concat("...");
     console.log(this.shortDescription);
   }
 
