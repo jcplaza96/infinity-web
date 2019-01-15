@@ -35,6 +35,7 @@ import { NuestrasInstalacionesComponent } from './components/nuestras-instalacio
 import { JavierComponent } from './components/juegos/javier/javier.component';
 import { FernandoComponent } from './components/juegos/fernando/fernando.component';
 import { FirebaseComponent } from './components/firebase/firebase.component';
+import { JuanCarlosComponent } from './components/juegos/juan-carlos/juan-carlos.component';
 
 
 
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'nuestras_instalaciones', component: NuestrasInstalacionesComponent },
   { path: 'javier', component: JavierComponent },
   { path: 'fgame', component: FernandoComponent },
+  { path: 'jcgame', component: JuanCarlosComponent },
   { path: 'admin', component: FirebaseComponent },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
@@ -75,6 +77,7 @@ const routes: Routes = [
     JavierComponent,
     FernandoComponent,
     FirebaseComponent,
+    JuanCarlosComponent,
   ],
   imports: [
     BrowserModule,
