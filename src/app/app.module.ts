@@ -36,6 +36,7 @@ import { JavierComponent } from './components/juegos/javier/javier.component';
 import { FernandoComponent } from './components/juegos/fernando/fernando.component';
 import { FirebaseComponent } from './components/firebase/firebase.component';
 import { JuanCarlosComponent } from './components/juegos/juan-carlos/juan-carlos.component';
+import { CursosComponent } from './components/cursos/cursos.component';
 
 
 
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'tienda', component: TiendaComponent },
   { path: 'alquiler', component: AlquilerComponent },
   { path: 'noticias', component: NoticiasComponent },
+  { path: 'cursos', component: CursosComponent },
   { path: 'nuestras_instalaciones', component: NuestrasInstalacionesComponent },
   { path: 'javier', component: JavierComponent },
   { path: 'fgame', component: FernandoComponent },
@@ -78,6 +80,7 @@ const routes: Routes = [
     FernandoComponent,
     FirebaseComponent,
     JuanCarlosComponent,
+    CursosComponent,
   ],
   imports: [
     BrowserModule,
