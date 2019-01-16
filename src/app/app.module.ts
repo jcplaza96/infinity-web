@@ -38,6 +38,7 @@ import { FirebaseComponent } from './components/firebase/firebase.component';
 import { JuanCarlosComponent } from './components/juegos/juan-carlos/juan-carlos.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { RecursosComponent } from './components/recursos/recursos.component';
+import { AngelComponent } from './components/juegos/angel/angel.component';
 
 
 
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'javier', component: JavierComponent },
   { path: 'fgame', component: FernandoComponent },
   { path: 'jcgame', component: JuanCarlosComponent },
+  { path: 'agame', component: AngelComponent },
   { path: 'admin', component: FirebaseComponent },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
@@ -84,6 +86,7 @@ const routes: Routes = [
     JuanCarlosComponent,
     CursosComponent,
     RecursosComponent,
+    AngelComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,11 +8,11 @@
   
   <!-- The slideshow -->
   <div class="carousel-inner">
-    <div class="carousel-item" *ngFor="let item of ofertas; first as isFirst" [ngClass]="{'active': isFirst}" background-image: [ngStyle]="{'background-image': 'url('+item.ofertasUrl+')'}">
+    <div class="carousel-item" *ngFor="let item of items; first as isFirst" [ngClass]="{'active': isFirst}" background-image: [ngStyle]="{'background-image': 'url(assets/img/' + item.image + ')'}">
       <div class="carousel-caption d-md-block">
     <!--<app-ofertas-slider *ngFor="let item of ofertas; first as isFirst" [(esPrimero)]="isFirst"></app-ofertas-slider>
       -->
-    <app-ofertas-slider></app-ofertas-slider>
+    <app-ofertas-slider [tittle]=item.tittle [description]=item.description></app-ofertas-slider>
 
       </div>
     </div>

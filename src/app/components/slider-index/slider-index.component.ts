@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OfertasSliderComponent } from '../ofertas-slider/ofertas-slider.component';
+import { FirebaseService } from 'src/app/services/firebase.service';
+
 
 @Component({
   selector: 'app-slider-index',
@@ -7,16 +9,24 @@ import { OfertasSliderComponent } from '../ofertas-slider/ofertas-slider.compone
   styleUrls: ['./slider-index.component.scss']
 })
 export class SliderIndexComponent implements OnInit {
-  ofertas:OfertasSliderComponent[]=[];
+  
+  items: any;
+  parent: string = "ofertas";
 
-  constructor() { 
-    for (let index = 0; index < 2; index++) {
-      this.ofertas[index]=(new OfertasSliderComponent());
-      this.ofertas[index].ofertasUrl="/assets/img/slider-"+(index+1)+".jpg";
-    }
+  constructor(private conexion: FirebaseService) { 
+   // for (let index = 0; index < 2; index++) {
+    //  this.ofertas[index]=(new OfertasSliderComponent());
+    //  this.ofertas[index].imagen="/assets/img/slider-"+(index+1)+".jpg";
+    //}
   }
 
   ngOnInit() {
+
+    this.conexion.listaItem(this.parent).subscribe(item =>{
+      this.items = item;
+      console.log(this.items);
+    })
+    console.log(this.parent);
   }
 
 }
