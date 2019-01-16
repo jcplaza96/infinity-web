@@ -31,5 +31,4 @@ export class FirebaseService {
     this.itemsCollection = this.afs.collection<Item>(id);
     this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle}) 
   }
-  
 }

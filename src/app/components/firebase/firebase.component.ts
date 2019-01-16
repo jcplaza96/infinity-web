@@ -22,7 +22,6 @@ export class FirebaseComponent implements OnInit {
   }
 
   createItem(d: string, t: string, i: string){
-
   }
 
   update(value: string){
