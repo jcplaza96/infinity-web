@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" >    
     <div class="col-md-6 mb-4 card" *ngFor="let item of items">
-        <app-list-item [imagen]=item.image [tittle]=item.tittle [description]=item.description></app-list-item>
+        <app-list-item [id]=this.parent [imagen]=item.image [tittle]=item.tittle [description]=item.description></app-list-item>
     </div>
   </div>
 </div>

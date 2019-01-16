@@ -12,7 +12,7 @@ export class ItemListComponent implements OnInit {
 
   items: any;
   @Input() parent: string;
-
+  id: string;
   constructor(private conexion: FirebaseService) {
     
     // for (let index = 0; index < 5; index++) {
@@ -24,6 +24,7 @@ export class ItemListComponent implements OnInit {
     this.conexion.listaItem(this.parent).subscribe(item =>{
       this.items = item;      
     })
+    this.id = this.parent;
     
   }
 
