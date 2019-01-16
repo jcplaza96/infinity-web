@@ -1,0 +1,16 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-recursos',
+  templateUrl: './recursos.component.html',
+  styleUrls: ['./recursos.component.scss']
+})
+export class RecursosComponent implements OnInit {
+
+  id: string = "recursos";
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
