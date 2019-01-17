@@ -39,6 +39,8 @@ import { JuanCarlosComponent } from './components/juegos/juan-carlos/juan-carlos
 import { CursosComponent } from './components/cursos/cursos.component';
 import { RecursosComponent } from './components/recursos/recursos.component';
 import { AngelComponent } from './components/juegos/angel/angel.component';
+import { RecursosListComponent } from './components/recursos/recursos-list/recursos-list.component';
+import { RecursosItemComponent } from './components/recursos/recursos-item/recursos-item.component';
 
 
 
@@ -87,6 +89,8 @@ const routes: Routes = [
     CursosComponent,
     RecursosComponent,
     AngelComponent,
+    RecursosListComponent,
+    RecursosItemComponent,
   ],
   imports: [
     BrowserModule,

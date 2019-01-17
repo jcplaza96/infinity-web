@@ -9,26 +9,25 @@ import { timeout } from 'q';
 })
 export class RecursosComponent implements OnInit {
 
-  parents :string[] = ["cursos","ninstalaciones"];
-  items: any[] = [""];
+  parents :string[] = ["cursos","ninstalaciones","ofertas"];
+  rows: any[] = [""];
   metaItems: any;
 
 
-  id: string = "recursos";
+  id: string = "";
   constructor(private conexion: FirebaseService) { }
 
   ngOnInit() {
     this.parents.forEach(element => {
       //console.log(element);
       this.conexion.listaItem(element).subscribe(item => {
-        this.items[element] = item;
+        this.rows[element] = item;
       });
       console.log(this.parents);
     });
-    
   }
   
   consola(){
-    console.log(this.items);
+    console.log((this.rows));
   }
 }

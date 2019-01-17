@@ -1,16 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-list-item',
-  templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.scss']
+  selector: 'app-recursos-item',
+  templateUrl: './recursos-item.component.html',
+  styleUrls: ['./recursos-item.component.scss']
 })
-export class ListItemComponent implements OnInit {
+export class RecursosItemComponent implements OnInit {
+
 
   @Input() imagen: string;
   @Input() tittle: string;
   @Input() description: string;
-  @Input() id: string;
+  @Input() origen: string;
   shortDescription: string = "";
   seeMore: boolean = false;
   constructor() {

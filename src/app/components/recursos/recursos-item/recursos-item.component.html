@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div [ngClass]="{'col-xl-6': !seeMore,'col-xl-12': seeMore, 'col-12': true}">
+            <img src="../../../assets/img/{{origen}}/{{imagen}}">
+            
+        </div>       
+       <div [ngClass]="{'col-xl-6': !seeMore,'col-xl-12': seeMore, 'col-12': true}">
+            <div class="row">
+                <div class="col-md-12 mt-4 ml-2">
+                    <!-- Inyeción Título -->
+                    <h4>{{tittle}}</h4>
+                </div>
+                <div class="col-md-12 ml-2" *ngIf="!seeMore">
+                    <p>
+                        <!-- Inyección componente  -->
+                        {{shortDescription}}
+                    </p>
+                </div>
+                <div class="col-md-12 col-12 ml-2">
+                    <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
+                    <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
+                    
+                    <div *ngIf="seeMore">{{description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
