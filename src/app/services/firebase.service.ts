@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item { description: string, image: string, tittle: string }
+export interface Item { description: string, image: string, tittle: string, origen?: string; }
 
 
 @Injectable({
@@ -29,6 +29,9 @@ export class FirebaseService {
 
   addItem(id: string, item: Item){
     this.itemsCollection = this.afs.collection<Item>(id);
-    this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle}) 
+    if(item.origen == null || item.origen == "")
+      this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle}) 
+    else
+      this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle, origen: item.origen}) 
   }
 }
