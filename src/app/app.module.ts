@@ -53,7 +53,7 @@ const routes: Routes = [
   { path: 'alquiler', component: AlquilerComponent },
   { path: 'noticias', component: NoticiasComponent },
   { path: 'cursos', component: CursosComponent },
-  { path: 'recursos', component: RecursosComponent},
+  { path: 'terminos_legales', component: RecursosComponent},
   { path: 'nuestras_instalaciones', component: NuestrasInstalacionesComponent },
   { path: 'javier', component: JavierComponent },
   { path: 'fgame', component: FernandoComponent },
