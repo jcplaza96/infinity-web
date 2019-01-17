@@ -3,9 +3,13 @@
 #header{
     height: 35vh;
     background-size: cover !important;
-    background-image: url('/assets/img/bannerDeporte.png') !important;
+    background-image: url('/assets/img/bannerTerminos.jpg') !important;
     min-height: 188px !important;
     max-height: 220px;
+}
+
+h1{
+    color: $fondo;
 }
 
 .container {
