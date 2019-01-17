@@ -16,12 +16,6 @@
                         {{shortDescription}}
                     </p>
                 </div>
-                <div class="col-md-12 col-12 ml-2">
-                    <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
-                    <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
-                    
-                    <div *ngIf="seeMore">{{description}}</div>
-                </div>
             </div>
         </div>
     </div>
