@@ -11,7 +11,7 @@ export class NuestrasInstalacionesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    window.onload = function() {
+    //window.onload = function() {
 
       // Video
       var video = <HTMLMediaElement> document.getElementById("video");
@@ -112,7 +112,11 @@ export class NuestrasInstalacionesComponent implements OnInit {
         //@ts-ignore
         video.volume = Number.volumeBar.value;
       });
-    }
+    //}
+  }
+
+  ngAfterViewInit() {
+    
   }
 
 }
