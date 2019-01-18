@@ -99,7 +99,7 @@ export class NuestrasInstalacionesComponent implements OnInit {
         playButton.innerHTML = "<i class='fas fa-pause'></i>";
         video.pause();
       });
-    
+    //
       // Play el video cuando la barra de reproducción se suelta
       seekBar.addEventListener("mouseup", function() {
         playButton.innerHTML = "<i class='fas fa-play'></i>";
