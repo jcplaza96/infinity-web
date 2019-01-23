@@ -21,9 +21,6 @@ export class SliderIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
-
     this.conexion.listaItem(this.parent).subscribe(item =>{
       this.items = item;
     })
