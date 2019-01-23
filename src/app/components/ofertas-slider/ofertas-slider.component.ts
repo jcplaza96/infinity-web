@@ -25,7 +25,6 @@ export class OfertasSliderComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
     onResize() {
-      console.log(this.descripcionOriginal);
       if(window.innerWidth>=992){
         this.reescalar=true
         this.description = this.descripcionOriginal;
@@ -34,7 +33,6 @@ export class OfertasSliderComponent implements OnInit {
         this.reescalar=false;
         let desc = this.description.split(" ");
         this.description="";
-        console.log(desc);
         for (let index = 0; index < 13 && desc[index] != null; index++) {
           this.description = this.description.concat(desc[index] + " ");
         }

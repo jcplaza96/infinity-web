@@ -26,9 +26,7 @@ export class SliderIndexComponent implements OnInit {
 
     this.conexion.listaItem(this.parent).subscribe(item =>{
       this.items = item;
-      console.log(this.items);
     })
-    console.log(this.parent);
   }
 
 }
