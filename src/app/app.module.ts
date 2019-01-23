@@ -41,6 +41,7 @@ import { RecursosComponent } from './components/recursos/recursos.component';
 import { AngelComponent } from './components/juegos/angel/angel.component';
 import { RecursosListComponent } from './components/recursos/recursos-list/recursos-list.component';
 import { RecursosItemComponent } from './components/recursos/recursos-item/recursos-item.component';
+import { LoginSignComponent } from './components/login-sign/login-sign.component';
 
 
 
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: 'fgame', component: FernandoComponent },
   { path: 'jcgame', component: JuanCarlosComponent },
   { path: 'agame', component: AngelComponent },
+  { path: 'login', component: LoginSignComponent },
   { path: 'admin', component: FirebaseComponent },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
@@ -91,6 +93,7 @@ const routes: Routes = [
     AngelComponent,
     RecursosListComponent,
     RecursosItemComponent,
+    LoginSignComponent,
   ],
   imports: [
     BrowserModule,
