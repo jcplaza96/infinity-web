@@ -11,6 +11,10 @@
     background-color: $fondo_footer /*rgba(0, 0, 0, 1)*/ !important;
   }
 
+  .navbar-dark.oscurecer{
+    background-color: $fondo_footer /*rgba(0, 0, 0, 1)*/ !important;
+  }
+
   @media screen and (max-width: 992px) {
     .navbar-dark {
       background-color: $fondo_footer/*rgba(0, 0, 0, 1)*/ !important;
