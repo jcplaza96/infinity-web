@@ -99,11 +99,8 @@ const routes: Routes = [
     AngelComponent,
     RecursosListComponent,
     RecursosItemComponent,
-<<<<<<< HEAD
     FilesComponent,
-=======
     LoginSignComponent,
->>>>>>> b82f4725763bc3d8041b159bbd88e09c5b248ac4
   ],
   imports: [
     BrowserModule,
