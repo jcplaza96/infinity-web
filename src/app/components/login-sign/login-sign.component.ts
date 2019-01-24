@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
+
 
 @Component({
   selector: 'app-login-sign',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginSignComponent implements OnInit {
 
-  constructor() { }
+  constructor(private conexion: FuncionesGlobalesService) { }
 
   ngOnInit() {
+    this.conexion.removeOpacity();
   }
 
+  ngOnDestroy() {
+    this.conexion.addOpacity();
+  }
 }
