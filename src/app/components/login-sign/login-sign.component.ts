@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
 
 
-declare var jQuery:any;
-declare var $:any;
+declare var jQuery: any;
+declare var $: any;
 
 
 @Component({
@@ -12,15 +12,63 @@ declare var $:any;
   styleUrls: ['./login-sign.component.scss']
 })
 export class LoginSignComponent implements OnInit {
-  target:any;
+  target: any;
 
   constructor(private conexion: FuncionesGlobalesService) { }
 
+
   ngOnInit() {
     this.conexion.navBar.setBackgroundDark();
+    this.efectosLogin();
   }
-  
+
   ngOnDestroy() {
     this.conexion.navBar.setBackgroundlight();
+  }
+
+  efectosLogin() {
+    $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+      var $this = $(this),
+        label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+        if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+      } else if (e.type === 'blur') {
+        if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.removeClass('highlight');
+        }
+      } else if (e.type === 'focus') {
+
+        if ($this.val() === '') {
+          label.removeClass('highlight');
+        }
+        else if ($this.val() !== '') {
+          label.addClass('highlight');
+        }
+      }
+
+    });
+
+    $('.tab a').on('click', function (e) {
+
+      e.preventDefault();
+
+      $(this).parent().addClass('active');
+      $(this).parent().siblings().removeClass('active');
+
+      this.target = $(this).attr('href');
+
+      $('.tab-content > div').not(this.target).hide();
+
+      $(this.target).fadeIn(600);
+
+    });
   }
 }
