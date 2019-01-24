@@ -41,6 +41,8 @@ import { RecursosComponent } from './components/recursos/recursos.component';
 import { AngelComponent } from './components/juegos/angel/angel.component';
 import { RecursosListComponent } from './components/recursos/recursos-list/recursos-list.component';
 import { RecursosItemComponent } from './components/recursos/recursos-item/recursos-item.component';
+import { FirebaseStorageService } from './services/storage/firebase-storage.service';
+import { FilesComponent } from './components/firebase/files/files.component';
 import { LoginSignComponent } from './components/login-sign/login-sign.component';
 import { FuncionesGlobalesService } from './services/funciones-globales.service';
 
@@ -94,18 +96,19 @@ const routes: Routes = [
     AngelComponent,
     RecursosListComponent,
     RecursosItemComponent,
+    FilesComponent,
     LoginSignComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [ FirebaseService, FuncionesGlobalesService ],
+  providers: [ FirebaseService,FirebaseStorageService,FuncionesGlobalesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
