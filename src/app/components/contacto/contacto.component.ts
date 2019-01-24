@@ -12,11 +12,11 @@ export class ContactoComponent implements OnInit {
   constructor(private conexion: FuncionesGlobalesService) { }
 
 ngOnInit() {
-  this.conexion.removeOpacity();
+  this.conexion.navBar.setBackgroundDark();
 }
 
 ngOnDestroy() {
-  this.conexion.addOpacity();
+  this.conexion.navBar.setBackgroundlight();
 }
 
 }

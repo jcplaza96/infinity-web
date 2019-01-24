@@ -13,9 +13,18 @@ export class NavBarComponent implements OnInit {
   scrolled:boolean = false;
   showMenu:boolean = false;
   showDropDown:boolean = false;
+  black: boolean = false;
 
 
   constructor() { }
+
+  public setBackgroundDark() {
+    this.black = true;
+  }
+
+  public setBackgroundlight() {
+    this.black = false;
+  }
 
   ngOnInit() {
 

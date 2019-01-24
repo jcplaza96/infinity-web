@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
+import { NavBarComponent } from '../components/nav-bar/nav-bar.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuncionesGlobalesService {
 
+  public navBar: NavBarComponent = null;
+
   constructor() { }
 
-  removeOpacity(){
-    document.getElementById("mainNav").classList.add("oscurecer");
-  }
-
-  addOpacity(){
-    document.getElementById("mainNav").classList.remove("oscurecer");
+  public setNavBar(navBar: NavBarComponent) {
+    this.navBar = navBar;
   }
 
 
