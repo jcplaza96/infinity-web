@@ -11,11 +11,11 @@
     <label>Imagen</label><input type="text" #imagen>  <br>
     <label>Origen</label><input type="text" #origen>  <br>
     <label>Descripción</label><textarea rows="4" cols="50" type="text" #description></textarea> <br>
-
+                              
   </form>
   <button (click)="addItem(section.value,tittle.value,imagen.value,description.value,origen.value)" class="mt-5" false>Crear nuevo</button>
   
-  
+  <app-files></app-files>
 
 </div>
 
