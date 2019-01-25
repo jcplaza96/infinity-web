@@ -1,7 +1,10 @@
-<div class="container" id="contenido">
+<div class="d-none" id="contenido">
   <div class="row" >    
     <div class="col-md-6 mb-4 card" *ngFor="let item of items">
         <app-list-item [id]=this.parent [imagen]=item.image [tittle]=item.tittle [description]=item.description></app-list-item>
     </div>
   </div>
+</div>
+<div id="carga" class="container d-flex justify-content-center align-items-center">
+  <img src="../../../assets/img/loading.gif">
 </div>

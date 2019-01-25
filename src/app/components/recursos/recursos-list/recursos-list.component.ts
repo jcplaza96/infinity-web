@@ -7,6 +7,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./recursos-list.component.scss']
 })
 export class RecursosListComponent implements OnInit {  
+  carga;contenido;
   items: any;
   id: string;
   constructor(private conexion: FirebaseService) {
@@ -17,9 +18,16 @@ export class RecursosListComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.carga = document.getElementById("carga");
+    this.contenido = document.getElementById("contenido");
+
     this.conexion.listaItem('recursos').subscribe(item =>{
       this.items = item;      
     })
 
+    setTimeout(() => {
+      this.carga.className = "d-none";
+      this.contenido.className = "container";
+    },1500)
   }
 }
