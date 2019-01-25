@@ -6,9 +6,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './recursos-list.component.html',
   styleUrls: ['./recursos-list.component.scss']
 })
-export class RecursosListComponent implements OnInit {
-  carga;contenido;
-  
+export class RecursosListComponent implements OnInit {  
   items: any;
   id: string;
   constructor(private conexion: FirebaseService) {
@@ -19,21 +17,9 @@ export class RecursosListComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.carga = document.getElementById("carga");
-    this.contenido = document.getElementById("contenido");
     this.conexion.listaItem('recursos').subscribe(item =>{
       this.items = item;      
     })
-    setTimeout(() => {
 
-    },0)
-  }
-  ngAfterContentInit(): void {
-    //Called after ngOnInit when the component's or directive's content has been initialized.
-    //Add 'implements AfterContentInit' to the class.
-    setTimeout(()=>{
-      this.contenido.className = "container";
-      this.carga.className = "d-none";    
-    },1200)
   }
 }
