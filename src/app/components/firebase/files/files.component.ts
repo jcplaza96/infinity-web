@@ -19,7 +19,7 @@ export class FilesComponent implements OnInit {
     this.event = event;
   }
 
-  uploadFile(){
-    this.fbs.uploadFile(this.event);
+  uploadFile(dir: string){
+    this.fbs.uploadFile(this.event,dir);
   }
 }
