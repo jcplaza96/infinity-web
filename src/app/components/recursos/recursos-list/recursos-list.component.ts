@@ -21,6 +21,8 @@ export class RecursosListComponent implements OnInit {
     this.conexion.listaItem('recursos').subscribe(item =>{
       this.items = item;      
     })
-    
+    setTimeout(() => {
+
+    },0)
   }
 }
