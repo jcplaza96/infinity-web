@@ -1,7 +1,10 @@
-<div class="container">
+<div class="d-none" id="contenido">
   <div class="row" >    
     <div class="col-md-6 mb-4 card" *ngFor="let item of items">
         <app-list-item [id]=this.parent [imagen]=item.image [tittle]=item.tittle [description]=item.description></app-list-item>
     </div>
   </div>
+</div>
+<div id="carga" class="d-flex justify-content-center align-items-center mb-5">
+	<div class="spinner-border text-danger"></div>
 </div>
