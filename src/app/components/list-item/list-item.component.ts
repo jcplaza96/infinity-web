@@ -26,7 +26,7 @@ export class ListItemComponent implements OnInit {
     }
     if(desc.length > 13) this.shortDescription = this.shortDescription.concat("...");
 
-    this.fbs.getFile(this.imagen,this.id).getDownloadURL().subscribe(url => {this.imageURL = url})
+    this.fbs.getFile(this.imagen,this.id).getDownloadURL().subscribe(url => {this.imageURL = url});
   }
 
   toogleSeeMore(){
