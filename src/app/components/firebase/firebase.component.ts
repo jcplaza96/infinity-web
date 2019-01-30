@@ -3,6 +3,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { fbind } from 'q';
 import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/template';
 import { stringify } from '@angular/core/src/util';
+import { FirebaseStorageService } from '../../services/storage/firebase-storage.service';
 
 @Component({
   selector: 'app-firebase',
@@ -11,15 +12,19 @@ import { stringify } from '@angular/core/src/util';
 })
 export class FirebaseComponent implements OnInit {
 
-  constructor(private fb : FirebaseService) { }
+  event: Event;
+  
+
+  constructor(private fb : FirebaseService, private fbs: FirebaseStorageService) { }
 
   ngOnInit() {
   }
   
-  addItem(section: string,tittle: string, image: string,description: string, origen: string){
-    if(image == null || image == '') image = "LOGO.png";
-     this.fb.addItem(section,{description: description,tittle: tittle, image: image, origen: origen});
-     
+  addItem(section: string,tittle: string,description: string, origen: string){
+    
+    this.fb.addItem(section,{description: description,tittle: tittle, image: this.fbs.uploadFile(this.event,origen), origen: origen});
+    //this.fbs.uploadFile(this.event,origen);
+    
   }
 
   createItem(d: string, t: string, i: string){
@@ -29,4 +34,8 @@ export class FirebaseComponent implements OnInit {
     document.getElementById("p").innerHTML = value;
   }
   
+  getFile(event: Event){
+    this.event = event;
+  }
+
 }

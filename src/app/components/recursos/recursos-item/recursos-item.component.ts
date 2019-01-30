@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FirebaseStorageService } from '../../../services/storage/firebase-storage.service';
 
 @Component({
   selector: 'app-recursos-item',
@@ -12,9 +13,10 @@ export class RecursosItemComponent implements OnInit {
   @Input() tittle: string;
   @Input() description: string;
   @Input() origen: string;
+  imagenURL: string;
   shortDescription: string = "";
   seeMore: boolean = false;
-  constructor() {
+  constructor(private fbs: FirebaseStorageService) {
   }
   
   ngOnInit() {
@@ -24,6 +26,8 @@ export class RecursosItemComponent implements OnInit {
       this.shortDescription = this.shortDescription.concat(desc[index] + " ");
     }
     if(desc.length > 13) this.shortDescription = this.shortDescription.concat("...");
+
+    this.fbs.getFile(this.imagen,this.origen).getDownloadURL().subscribe(url => {this.imagenURL = url})
   }
 
   toogleSeeMore(){

@@ -8,12 +8,12 @@
                             <option value="cursos">Cursos</option>
                           </select> <br>
     <label>Título</label><input type="text" #tittle> <br>
-    <label>Imagen</label><input type="text" #imagen>  <br>
+    <input type="file" (change)="getFile($event)"><br>
     <label>Origen</label><input type="text" #origen>  <br>
     <label>Descripción</label><textarea rows="4" cols="50" type="text" #description></textarea> <br>
                               
   </form>
-  <button (click)="addItem(section.value,tittle.value,imagen.value,description.value,origen.value)" class="mt-5" false>Crear nuevo</button>
+  <button (click)="addItem(section.value,tittle.value,description.value,origen.value)" class="mt-5" false>Crear nuevo</button>
   
   <app-files></app-files>
 

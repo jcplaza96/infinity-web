@@ -11,10 +11,11 @@ export class FirebaseStorageService {
   constructor(private fbs: AngularFireStorage) { }
 
 
-  uploadFile(event){
+  uploadFile(event,dir: string){
     const file: File = event.target.files[0];
-    let ref = this.fbs.ref("prueba/"+file.name);
+    let ref = this.fbs.ref(dir+"/"+file.name);
     const task = ref.put(file);
+    return file.name;
   }
 
   getFile(filename: string, dirname: string){
