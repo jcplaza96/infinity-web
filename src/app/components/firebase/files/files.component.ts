@@ -21,7 +21,7 @@ export class FilesComponent implements OnInit {
     document.getElementById('mensaje').innerHTML = event.target.files[0].name;
   }
 
-  uploadFile(){
-    this.fbs.uploadFile(this.event);
+  uploadFile(dir: string){
+    this.fbs.uploadFile(this.event,dir);
   }
 }

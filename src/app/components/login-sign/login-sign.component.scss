@@ -44,6 +44,8 @@ a {
   &:hover {
     color:$main-dark;
   }
+  height: 90px;
+  
 }
 
 .form {
@@ -65,7 +67,6 @@ a {
     clear: both;
   }
   li a {
-    display:block;
     text-decoration:none;
     padding:15px;
     background:rgba($gray-light,.25);
@@ -74,6 +75,9 @@ a {
     float:left;
     width:50%;
     text-align:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor:pointer;
     transition:.5s ease;
     &:hover {
