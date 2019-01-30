@@ -17,9 +17,10 @@ export class FirebaseComponent implements OnInit {
   }
   
   addItem(section: string,tittle: string, image: string,description: string, origen: string){
-    if(image == null || image == '') image = "LOGO.png";
-     this.fb.addItem(section,{description: description,tittle: tittle, image: image, origen: origen});
-     
+    if(tittle != '' && description != ''){
+      if(image == null || image == '') image = "LOGO.png";
+       this.fb.addItem(section,{description: description,tittle: tittle, image: image, origen: origen});
+    }
   }
 
   createItem(d: string, t: string, i: string){

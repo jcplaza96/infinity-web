@@ -13,10 +13,12 @@ export class FilesComponent implements OnInit {
   constructor(private fbs: FirebaseStorageService) { }
 
   ngOnInit() {
+    
   }
 
-  getFile(event: Event){
+  getFile(event){
     this.event = event;
+    document.getElementById('mensaje').innerHTML = event.target.files[0].name;
   }
 
   uploadFile(){

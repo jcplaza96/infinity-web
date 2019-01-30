@@ -1,4 +1,8 @@
 <div class="container-fluid mt-5">
-  <input type="file" (change)="getFile($event)"><br>
-  <button (click)="uploadFile()">Subir archivo</button>
+  <span class="nuestroinput">
+    <input id="nuestroinput" type="file" (change)="getFile($event)"><br>
+  </span>
+  
+  <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Subir archivo</span></label><br>
+  <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
 </div>

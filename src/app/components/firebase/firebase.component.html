@@ -1,21 +1,22 @@
-<div class="container mt-5">
+<div class="container mt-5 text-center">
   <br>
   <form class="mt-5">
-    <label>Sección</label><select #section>
+    <label>Sección:</label><br><select #section>
                             <option value="recursos">Recursos</option>
                             <option value="ninstalaciones">Instalaciones</option>
                             <option value="noticias">Noticias</option>
                             <option value="cursos">Cursos</option>
                           </select> <br>
-    <label>Título</label><input type="text" #tittle> <br>
-    <label>Imagen</label><input type="text" #imagen>  <br>
-    <label>Origen</label><input type="text" #origen>  <br>
-    <label>Descripción</label><textarea rows="4" cols="50" type="text" #description></textarea> <br>
-                              
+    <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
+    <label class="mt-2">Imagen:</label><br><input type="text" #imagen  required>  <br>
+    
+    <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
+    <!-- <input type="submit" (ngSubmit)="addItem(section.value,tittle.value,imagen.value,description.value,section.value)" >                   -->
   </form>
-  <button (click)="addItem(section.value,tittle.value,imagen.value,description.value,origen.value)" class="mt-5" false>Crear nuevo</button>
+  <button (click)="addItem(section.value,tittle.value,imagen.value,description.value,section.value)" class="btn btn-danger mt-2" false>Crear nuevo</button> 
   
   <app-files></app-files>
 
 </div>
+
 
