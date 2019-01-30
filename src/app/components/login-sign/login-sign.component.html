@@ -36,7 +36,7 @@
           <label>
             Correo electrónico<span class="req">*</span>
           </label>
-          <input type="email"required autocomplete="off"/>
+          <input type="email" required autocomplete="off"/>
         </div>
         
         <div class="field-wrap">
@@ -55,27 +55,28 @@
       <div id="login">   
         <h1>Bienvenido de nuevo</h1>
         
-        <form action="/" method="post">
+        <div>
         
           <div class="field-wrap">
           <label>
             Correo electrónico<span class="req">*</span>
           </label>
-          <input type="email"required autocomplete="off"/>
+          <input type="email" #userEmail required autocomplete="off"/>
         </div>
         
         <div class="field-wrap">
           <label>
             Contraseña<span class="req">*</span>
           </label>
-          <input type="password"required autocomplete="off"/>
+          <input type="password" #userPassword required autocomplete="off"/>
         </div>
         
         <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
         
-        <button class="button button-block">Iniciar sesión</button>
-        
-        </form>
+        <!-- <button class="button button-block">Log In</button> -->
+        <button  class="button button-block"  (click)="login(userEmail.value, userPassword.value)">Iniciar sesión</button> 
+
+      </div>
   
       </div>
       
