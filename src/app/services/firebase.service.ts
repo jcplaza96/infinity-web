@@ -17,6 +17,7 @@ export class FirebaseService {
     //this.itemsCollection = this.afs.collection<Item>('items');
   }
   
+  
 
 
 

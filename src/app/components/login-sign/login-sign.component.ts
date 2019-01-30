@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 
 declare var jQuery: any;
@@ -14,8 +16,12 @@ declare var $: any;
 export class LoginSignComponent implements OnInit {
   target: any;
 
-  constructor(private conexion: FuncionesGlobalesService) { }
+  constructor(private conexion: FuncionesGlobalesService, private  authService:  AuthService) { }
 
+
+  login(email, password){
+    this.authService.login(email, password);
+  }
 
   ngOnInit() {
     this.conexion.navBar.setBackgroundDark();
