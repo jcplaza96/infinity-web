@@ -15,7 +15,7 @@ export class FirebaseStorageService {
     const file: File = event.target.files[0];
     let ref = this.fbs.ref(dir+"/"+file.name);
     const task = ref.put(file);
-    return file.name;
+    return task.snapshotChanges();
   }
 
   getFile(filename: string, dirname: string){

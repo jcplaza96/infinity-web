@@ -20,22 +20,19 @@ export class FirebaseComponent implements OnInit {
   ngOnInit() {
   }
   
-  addItem(section: string,tittle: string, image: string,description: string, origen: string){
+  addItem(section: string,tittle: string,description: string, origen: string){
     if(tittle != '' && description != ''){
-      if(image == null || image == '') image = "LOGO.png";
-       this.fb.addItem(section,{description: description,tittle: tittle, image: image, origen: origen});
+      this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
+        res.ref.getDownloadURL().then(url => {
+          this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
+        })
+      })
     }
   }
-
-  createItem(d: string, t: string, i: string){
-  }
-
-  update(value: string){
-    document.getElementById("p").innerHTML = value;
-  }
   
-  getFile(event: Event){
+  getFile(event){
     this.event = event;
+    document.getElementById("mensaje").innerHTML = " "+event.target.files[0].name+" ";
   }
 
 }
