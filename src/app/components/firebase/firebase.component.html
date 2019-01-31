@@ -10,18 +10,17 @@
     <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
     
     <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
-    <!-- <input type="submit" (ngSubmit)="addItem(section.value,tittle.value,imagen.value,description.value,section.value)" >                   -->
-  </form>
-  <div class="container-fluid mt-5">
-    <span class="nuestroinput">
-      <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Subir imagen</span></label><br>     
-    </span>
-    <span class="nuestroinput">
-        <input id="nuestroinput" type="file" (change)="getFile($event)"><br>
+    <div class="container-fluid mt-5">
+      <span class="nuestroinput">
+        <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
       </span>
-    <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
-  </div>
-  <button (click)="addItem(section.value,tittle.value,description.value,section.value)" class="btn btn-danger mt-2" false>Crear nuevo</button> 
+      <span class="nuestroinput">
+        <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
+      </span>
+      <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
+      <button (click)="addItem(section.value,tittle.value,description.value,section.value)"  class="btn btn-danger mt-2" false>Crear nuevo</button> 
+    </div>
+  </form>
 
 </div>
 
