@@ -1,3 +1,5 @@
+@import "../../../assets/scss/variables.scss";
+
 /*
  * Bootstrap Cookie Alert by Wruczek
  * https://github.com/Wruczek/Bootstrap-Cookie-Alert
@@ -14,8 +16,8 @@
     border-radius: 0;
     transform: translateY(100%);
     transition: all 500ms ease-out;
-    color: #ecf0f1;
-    background: #212327 ;
+    color: $color_letras;
+    background: $fondo_footer;
 }
 
 .cookiealert.show {
