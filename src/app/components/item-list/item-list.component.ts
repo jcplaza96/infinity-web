@@ -32,6 +32,7 @@ export class ItemListComponent implements OnInit {
       this.carga.className = "d-none";
       this.contenido.className = "container";
     },2000)
+    window.scrollTo(0,0);
   }
 
 }
