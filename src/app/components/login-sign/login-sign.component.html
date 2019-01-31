@@ -1,88 +1,92 @@
 <div id="container">
 
   <div id="header">
-    
+
   </div>
   <div class="form">
-        
+
     <ul class="tab-group">
       <li class="tab active"><a href="#signup">Registrarse</a></li>
       <li class="tab"><a href="#login">Iniciar sesión</a></li>
     </ul>
-    
+
     <div class="tab-content">
-      <div id="signup">   
+      <div id="signup">
         <h1>Regístrate</h1>
-        
-        <form action="/" method="post">
-        
-        <div class="top-row">
+
+        <div action="/" method="post">
+
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Nombre<span class="req">*</span>
+              </label>
+              <input type="text" #registerNombre required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Apellido<span class="req">*</span>
+              </label>
+              <input type="text" #registerApellido required autocomplete="off" />
+            </div>
+          </div>
+
           <div class="field-wrap">
             <label>
-              Nombre<span class="req">*</span>
+              Correo electrónico<span class="req">*</span>
             </label>
-            <input type="text" required autocomplete="off" />
+            <input type="email" #registerEmail required autocomplete="off" />
           </div>
-      
+
           <div class="field-wrap">
             <label>
-              Apellido<span class="req">*</span>
+              Contraseña<span class="req">*</span>
             </label>
-            <input type="text"required autocomplete="off"/>
+            <input type="password" #registerPassword required autocomplete="off" />
           </div>
+
+          <button class="button button-block" (click)='register(registerEmail.value, registerPassword.value, registerNombre.value, registerApellido.value)'>Registrarse</button>
+
         </div>
-  
-        <div class="field-wrap">
-          <label>
-            Correo electrónico<span class="req">*</span>
-          </label>
-          <input type="email" required autocomplete="off"/>
-        </div>
-        
-        <div class="field-wrap">
-          <label>
-            Contraseña<span class="req">*</span>
-          </label>
-          <input type="password"required autocomplete="off"/>
-        </div>
-        
-        <button type="submit" class="button button-block">Registrarse</button>
-        
-        </form>
-  
-      </div>
-      
-      <div id="login">   
-        <h1>Bienvenido de nuevo</h1>
-        
-        <div>
-        
-          <div class="field-wrap">
-          <label>
-            Correo electrónico<span class="req">*</span>
-          </label>
-          <input type="email" #userEmail required autocomplete="off"/>
-        </div>
-        
-        <div class="field-wrap">
-          <label>
-            Contraseña<span class="req">*</span>
-          </label>
-          <input type="password" #userPassword required autocomplete="off"/>
-        </div>
-        
-        <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
-        
-        <!-- <button class="button button-block">Log In</button> -->
-        <button  class="button button-block"  (click)="login(userEmail.value, userPassword.value)">Iniciar sesión</button> 
 
       </div>
-  
+
+      <div id="login">
+        <h1>Bienvenido de nuevo</h1>
+
+        <div>
+
+          <div class="field-wrap">
+            <label>
+              Correo electrónico<span class="req">*</span>
+            </label>
+            <input type="email" #userEmail required autocomplete="off" />
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Contraseña<span class="req">*</span>
+            </label>
+            <input type="password" #userPassword required autocomplete="off" />
+          </div>
+
+          <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
+
+          <!-- <button class="button button-block">Log In</button> -->
+          <button class="button button-block" (click)="loginEmail(userEmail.value, userPassword.value)">Iniciar sesión</button>
+
+          <button class="button button-block mt-3 bg-danger" (click)="loginGoogle()"><i class="fab fa-google"></i>oogle</button>
+          <button class="button button-block" (click)="logout()">Cerrar sesión</button>
+
+
+        </div>
+
       </div>
-      
+
     </div><!-- tab-content -->
-    
+
   </div> <!-- /form -->
-  
+
   <app-footer></app-footer>
 </div>

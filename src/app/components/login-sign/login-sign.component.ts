@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from "@angular/router";
+import {NgForm} from '@angular/forms';
 
 
 
@@ -16,16 +18,44 @@ declare var $: any;
 export class LoginSignComponent implements OnInit {
   target: any;
 
-  constructor(private conexion: FuncionesGlobalesService, private  authService:  AuthService) { }
+  constructor(private conexion: FuncionesGlobalesService, private  authService:  AuthService, private router: Router) { }
 
 
-  login(email, password){
-    this.authService.login(email, password);
+  logout(){
+    this.authService.logoutUser();
+    this.router.navigate(['/']);
+  }
+
+  register(email, password, nombre, apellido){
+    this.authService.registerUser(email, password)
+    .then((res)=>{
+      var user = this.authService.isLoggedIn();
+      user.updateProfile({
+        displayName: nombre +' '+ apellido,
+        photoURL: ''
+      });
+      this.router.navigate(['/']);
+    }).catch(err=> console.log('err', err.message));
+  }
+
+  loginEmail(email, password): void{
+    this.authService.loginEmailUser(email, password)
+    .then((res)=>{
+      this.router.navigate(['/']);
+    }).catch(err=> console.log('err', err.message));
+  }
+
+  loginGoogle(): void{
+    this.authService.loginGoogleUser()
+      .then((res)=>{
+        this.router.navigate(['/']);
+      }).catch(err=> console.log('err', err.message));
   }
 
   ngOnInit() {
-    this.conexion.navBar.setBackgroundDark();
+    console.log(this.authService.isLoggedIn());
     this.efectosLogin();
+    this.conexion.navBar.setBackgroundDark();
   }
 
   ngOnDestroy() {

@@ -9,14 +9,14 @@ import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.se
 })
 export class ContactoComponent implements OnInit {
 //
-  constructor(private conexion: FuncionesGlobalesService) { }
+  constructor(private globales: FuncionesGlobalesService) { }
 
 ngOnInit() {
-  this.conexion.navBar.setBackgroundDark();
+  this.globales.navBar.setBackgroundDark();
 }
 
 ngOnDestroy() {
-  this.conexion.navBar.setBackgroundlight();
+  this.globales.navBar.setBackgroundlight();
 }
 
 }
