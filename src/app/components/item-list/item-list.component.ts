@@ -31,7 +31,8 @@ export class ItemListComponent implements OnInit {
     setTimeout(() => {
       this.carga.className = "d-none";
       this.contenido.className = "container";
-    },1500)
+    },2000)
+    window.scrollTo(0,0);
   }
 
 }

@@ -25,6 +25,7 @@
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0 d-flex">
+        <i id="notificacion" *ngIf="notificacion" (click)="quitarnotificacion()" class="btn far fa-bell"></i>
       <a class="navbar-brand ml-3" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
     </div>
   </div>

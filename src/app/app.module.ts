@@ -45,6 +45,7 @@ import { FirebaseStorageService } from './services/storage/firebase-storage.serv
 import { FilesComponent } from './components/firebase/files/files.component';
 import { LoginSignComponent } from './components/login-sign/login-sign.component';
 import { FuncionesGlobalesService } from './services/funciones-globales.service';
+import { CookiesComponent } from './components/cookies/cookies.component';
 
 
 
@@ -98,6 +99,7 @@ const routes: Routes = [
     RecursosItemComponent,
     FilesComponent,
     LoginSignComponent,
+    CookiesComponent,
   ],
   imports: [
     BrowserModule,

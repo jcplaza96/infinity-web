@@ -29,10 +29,7 @@ export class FirebaseService {
    }
 
   addItem(id: string, item: Item){
-    this.itemsCollection = this.afs.collection<Item>(id);
-    if(item.origen == null || item.origen == "")
-      this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle}) 
-    else
-      this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle, origen: item.origen}) 
+    this.itemsCollection = this.afs.collection<Item>(id);   
+    this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle, origen: item.origen}) 
   }
 }
