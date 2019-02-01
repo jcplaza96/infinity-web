@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener, Inject } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare let $:any;
 
@@ -17,7 +18,8 @@ export class NavBarComponent implements OnInit {
   notificacion: boolean = false;
 
 
-  constructor() { }
+  constructor(private  authService:  AuthService) { }
+
 
   public setBackgroundDark() {
     this.black = true;

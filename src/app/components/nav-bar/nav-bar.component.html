@@ -39,7 +39,7 @@
   
     <!-- Overlay content -->
     <div class="overlay-content">
-        <ul>
+        
             <li>
               <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
             </li>
@@ -47,7 +47,6 @@
               <a (click)="toggleDropDown()">Servicios</a>
               <div *ngIf="showDropDown">
                 <hr>
-                <ul>
                   <li>
                     <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/noticias']">Noticias</a>
                   </li>
@@ -57,17 +56,16 @@
                   <li>
                     <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/nuestras_instalaciones']">Instalaciones</a>
                   </li>
-                  <li>
-                    <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/recursos']">Recursos</a>
-                  </li>
-                </ul>
                 <hr>
               </div>
             </li>
             <li >
               <a class="nav-link" (click)="closeNav()" data-toggle="collapse" [routerLink]="['/contacto']">Contacto</a>
             </li>
-          </ul>      
+        
+          <div class="text-center">
+            <a class="" [routerLink]="['/login']" (click)="closeNav()"><img src="/assets/img/logo-login.png" width="40px"></a>
+          </div>      
     </div>
   
   </div>
