@@ -4,6 +4,10 @@ import { fbind } from 'q';
 import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/template';
 import { stringify } from '@angular/core/src/util';
 import { FirebaseStorageService } from '../../services/storage/firebase-storage.service';
+import { map } from 'rxjs/operators';
+
+export interface Item { description: string, image: string, tittle: string, origen?: string; }
+
 
 @Component({
   selector: 'app-firebase',
@@ -25,6 +29,7 @@ export class FirebaseComponent implements OnInit {
   constructor(private fb : FirebaseService, private fbs: FirebaseStorageService) { }
 
   ngOnInit() {
+    
   }
   
   addItem(section: string,tittle: string,description: string, origen: string){
@@ -44,17 +49,37 @@ export class FirebaseComponent implements OnInit {
 
   toggleUsuarios(){
     this.usuarios = !this.usuarios;
-    this.getItem();
   }
   toggleContenido(){
     this.contenido = !this.contenido;
   }
 
-  getItem(){
-    this.fb.getItem().subscribe(res => {
-      this.item = res[0];
-      console.log(res);
-    })
-    
+  // getItem(){
+  //   this.item = this.fb.getItem().pipe(map(actions => actions.map(a => {
+  //       const data = a.payload.doc.data() as Item;
+  //       const id = a.payload.doc.id;
+  //       console.log("object");
+  //       return {id,...data};
+  //     }))
+  //   );
+
+  getItem(section: string,title: string){ 
+    this.item = false;
+    let aux = this.fb.getItem(section,title);
+    if(aux != false){
+      aux.subscribe(actions => {
+        this.item = {id: actions[0].payload.doc.id, ...actions[0].payload.doc.data()}
+      });
+    }
+  }
+
+  update(id,path,title,description){
+      console.log(description);
+    this.fb.update(id,path,{tittle: title,description: description});
+  }
+
+  delete(id,path){
+    this.fb.delete(id,path);
+    this.item = false;
   }
 }

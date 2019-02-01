@@ -28,8 +28,20 @@ export class FirebaseService {
     this.itemsCollection.add({description: item.description, image: item.image, tittle: item.tittle, origen: item.origen}) 
   }
 
-  getItem(){
-    let ref = this.afs.collection("noticias", ref => ref.where('tittle',"==","Prueba mas"));
-    return ref.valueChanges();
+  getItem(section,title: String){
+    try{
+      let ref = this.afs.collection(section,ref => ref.where("tittle","==",title));
+      return ref.snapshotChanges();
+    }catch(error){
+      return false;
+    }
+  }
+  update(id,path,data){
+    this.afs.collection(path).doc(id).update({description: data.description, tittle: data.tittle});
+    console.log(data);
+  }
+
+  delete(id,path){
+    this.afs.collection(path).doc(id).delete();
   }
 }

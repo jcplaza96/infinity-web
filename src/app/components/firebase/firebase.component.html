@@ -6,32 +6,63 @@
   </div>
   <div class="row">
 
-    <div *ngIf="contenido" class="col-6"  id="contenido">
-      <form class="mt-5">
-        <label>Sección:</label><br><select #section>
-          <option value="recursos">Recursos</option>
-          <option value="ninstalaciones">Instalaciones</option>
-          <option value="noticias">Noticias</option>
-          <option value="cursos">Cursos</option>
-        </select> <br>
-        <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
+    <div *ngIf="contenido" class="col-12"  id="contenido">
+      <div class="row mt-5">
         
-        <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
-        <div class="container-fluid mt-4">
-          <span class="nuestroinput">
-            <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
-          </span>
-          <span class="nuestroinput">
-            <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
-          </span>
-          <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
-          <button (click)="addItem(section.value,tittle.value,description.value,section.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
+        <div class="col-6">
+          <form class="">
+            <label>Sección:</label><br><select #section>
+              <option value="recursos">Recursos</option>
+              <option value="ninstalaciones">Instalaciones</option>
+              <option value="noticias">Noticias</option>
+              <option value="cursos">Cursos</option>
+            </select> <br>
+            <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
+            
+            <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
+            <div class="container-fluid mt-4">
+              <span class="nuestroinput">
+                <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
+              </span>
+              <span class="nuestroinput">
+                <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
+              </span>
+              <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
+              <button (click)="addItem(section.value,tittle.value,description.value,section.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
+            </div>
+          </form>
         </div>
-      </form>
+        <div id="kjsahdka" class="col-6">
+          <div class="col-12 mt-3">
+            <form>
+              <label>Sección:</label><br><select #section>
+                <option value="recursos">Recursos</option>
+                <option value="ninstalaciones">Instalaciones</option>
+                <option value="noticias">Noticias</option>
+                <option value="cursos">Cursos</option>
+              </select> <br>
+              <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
+              
+            </form>
+            <button (click)="getItem(section.value,tittle.value)">Buscar</button>
+              <div *ngIf="item" class="col-12 card">
+                <form>
+                  Título: <input type="text" value="{{item.tittle}}" #tittle><br>
+                  Descripcion: <br> <textarea rows="4" cols="50" type="text" #description>{{item.description}}</textarea><br>
+                </form>
+                <button (click)="update(item.id,item.origen,tittle.value,description.value)">Update</button>            
+                <button (click)="delete(item.id,item.origen)">Delete</button>            
+              </div>
+          </div>
+          </div>
+      </div>
+      
     </div>
-    
-    <div *ngIf="usuarios && item" class="col-6" id="usuarios">
-      {{item.tittle}}
+      
+    <div *ngIf="usuarios"  class="col-12 mt-5" id="usuarios">
+      <div class="row">
+        
+      
     </div>
   </div>  
 </div>
