@@ -26,17 +26,18 @@
     </ul>
   </div>
   <div class="form-inline my-2 my-lg-0 d-flex">
-    <i id="notificacion" *ngIf="notificacion" (click)="quitarnotificacion()" class="btn far fa-bell"></i>
+    <span *ngIf='logged' class="nav-link texto-titulo">Bienvenido {{userName}}</span>
+    <i id="notificacion"  (click)="quitarnotificacion()" class="btn far fa-bell"></i>
 
-    <a class="navbar-brand ml-1" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
+    <a class="navbar-brand ml-1" *ngIf="!logged" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
     
-    <li class="nav-item dropdown" routerLinkActive="active">
+    <li class="nav-item dropdown" *ngIf="logged" routerLinkActive="active">
       <a class="nav-link ml-1 dropdown-toggle texto-titulo btn" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/img/logo-login.png" width="40px"></a>
       <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item texto-subtitulos" data-toggle="collapse">Perfil</a>
-        <a class="dropdown-item texto-subtitulos" data-toggle="collapse">Configuración</a>
+        <a class="dropdown-item texto-subtitulos btn" data-toggle="collapse">Perfil</a>
+        <a class="dropdown-item texto-subtitulos btn" data-toggle="collapse">Configuración</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item texto-subtitulos" data-toggle="collapse">Cerrar sesión</a>
+        <a class="dropdown-item texto-subtitulos btn" (click)='logout()' data-toggle="collapse">Cerrar sesión</a>
       </div>
     </li>
   </div>

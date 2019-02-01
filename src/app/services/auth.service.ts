@@ -47,12 +47,20 @@ export class AuthService {
   }
 
   logoutUser() { 
+    this.router.navigate(['/']);
     return this.afAuth.auth.signOut();
   }
 
   isLoggedIn(){
-    // return this.afAuth.authState.pipe(map(auth=>auth));
+    return this.afAuth.authState.pipe(map(auth=>auth));
+  }
+
+  getCurrentUser(){
     return this.afAuth.auth.currentUser;
+  }
+
+  isUserAdmin(userUid){
+    return this.afs.doc<UserInterface>(`users/${userUid}`).valueChanges();
   }
 
   private updateUserData(user){
@@ -61,7 +69,9 @@ export class AuthService {
       id: user.uid,
       email: user.email, 
       roles:{
-        editor:true
+        reader:true,
+        admin:false,
+        editor:false
       }
     }
     return userRef.set(data, {merge:true})

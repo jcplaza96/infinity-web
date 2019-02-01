@@ -16,6 +16,13 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirebaseService } from './services/firebase.service';
 
+
+/**
+ * Guards
+ */
+
+ import { AuthGuard } from './guards/auth.guard'
+
 /**
  * Custom components import
  */
@@ -67,7 +74,7 @@ const routes: Routes = [
   { path: 'jcgame', component: JuanCarlosComponent },
   { path: 'agame', component: AngelComponent },
   { path: 'login', component: LoginSignComponent },
-  { path: 'admin', component: FirebaseComponent },
+  { path: 'admin', component: FirebaseComponent, canActivate: [AuthGuard] },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

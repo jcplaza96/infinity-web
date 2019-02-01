@@ -5,6 +5,10 @@ import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/te
 import { stringify } from '@angular/core/src/util';
 import { FirebaseStorageService } from '../../services/storage/firebase-storage.service';
 
+import { AngularFireAuth } from "@angular/fire/auth";
+import { UserInterface } from '../../models/user'
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-firebase',
   templateUrl: './firebase.component.html',
@@ -18,13 +22,15 @@ export class FirebaseComponent implements OnInit {
 
    contenido: boolean;
    usuarios: boolean;
+   isAdmin: any = null;
 
   event: Event;
   item;
 
-  constructor(private fb : FirebaseService, private fbs: FirebaseStorageService) { }
+  constructor(private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.getCurrentUser();
   }
   
   addItem(section: string,tittle: string,description: string, origen: string){
@@ -56,5 +62,16 @@ export class FirebaseComponent implements OnInit {
       console.log(res);
     })
     
+  }
+
+
+  getCurrentUser(){
+    this.authService.isLoggedIn().subscribe(auth=>{
+      if(auth){
+        this.authService.isUserAdmin(auth.uid).subscribe(userRole=>{
+          this.isAdmin = Object.assign({},userRole.roles).hasOwnProperty('admin');
+        })
+      }
+    })
   }
 }
