@@ -1,27 +1,40 @@
 <div class="container mt-5 text-center">
   <br>
-  <form class="mt-5">
-    <label>Sección:</label><br><select #section>
-                            <option value="recursos">Recursos</option>
-                            <option value="ninstalaciones">Instalaciones</option>
-                            <option value="noticias">Noticias</option>
-                            <option value="cursos">Cursos</option>
-                          </select> <br>
-    <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
-    
-    <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
-    <div class="container-fluid mt-5">
-      <span class="nuestroinput">
-        <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
-      </span>
-      <span class="nuestroinput">
-        <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
-      </span>
-      <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
-      <button (click)="addItem(section.value,tittle.value,description.value,section.value)"  class="btn btn-danger mt-2" false>Crear nuevo</button> 
+  <div style="display: inline-block">  
+    <button (click)="toggleContenido()" class="ml-2 mt-3 btn btn-danger" >Contenido</button>
+    <button (click)="toggleUsuarios()" class="ml-2 mt-3 btn btn-danger" >Usuarios</button>
+  </div>
+  <div class="row">
+
+    <div *ngIf="contenido" class="col-6"  id="contenido">
+      <form class="mt-5">
+        <label>Sección:</label><br><select #section>
+          <option value="recursos">Recursos</option>
+          <option value="ninstalaciones">Instalaciones</option>
+          <option value="noticias">Noticias</option>
+          <option value="cursos">Cursos</option>
+        </select> <br>
+        <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
+        
+        <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
+        <div class="container-fluid mt-4">
+          <span class="nuestroinput">
+            <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
+          </span>
+          <span class="nuestroinput">
+            <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
+          </span>
+          <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
+          <button (click)="addItem(section.value,tittle.value,description.value,section.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
+        </div>
+      </form>
     </div>
-  </form>
-
+    
+    <div *ngIf="usuarios && item" class="col-6" id="usuarios">
+      {{item.tittle}}
+    </div>
+  </div>  
 </div>
-
-
+  
+  
+  
