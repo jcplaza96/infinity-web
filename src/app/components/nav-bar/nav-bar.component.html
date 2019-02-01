@@ -3,7 +3,7 @@
   <button class="navbar-toggler" (click)="openNav()" type="button" data-toggle="collapse">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand ml-3" href="#"><img src="/assets/img/LOGO_BLANCO.png" width="50px"></a>
+  <a class="navbar-brand ml-1" href="#"><img src="/assets/img/LOGO_BLANCO.png" width="50px"></a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -24,10 +24,21 @@
         <a class="nav-link texto-titulo" data-toggle="collapse" [routerLink]="['/contacto']">Contacto</a>
       </li>
     </ul>
-    <div class="form-inline my-2 my-lg-0 d-flex">
-        <i id="notificacion" *ngIf="notificacion" (click)="quitarnotificacion()" class="btn far fa-bell"></i>
-      <a class="navbar-brand ml-3" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
-    </div>
+  </div>
+  <div class="form-inline my-2 my-lg-0 d-flex">
+    <i id="notificacion" *ngIf="notificacion" (click)="quitarnotificacion()" class="btn far fa-bell"></i>
+
+    <a class="navbar-brand ml-1" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
+    
+    <li class="nav-item dropdown" routerLinkActive="active">
+      <a class="nav-link ml-1 dropdown-toggle texto-titulo btn" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/img/logo-login.png" width="40px"></a>
+      <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item texto-subtitulos" data-toggle="collapse">Perfil</a>
+        <a class="dropdown-item texto-subtitulos" data-toggle="collapse">Configuración</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item texto-subtitulos" data-toggle="collapse">Cerrar sesión</a>
+      </div>
+    </li>
   </div>
 </nav>
 <!--Fin navBar-->
@@ -40,32 +51,28 @@
     <!-- Overlay content -->
     <div class="overlay-content">
         
+      <li>
+        <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li >
+        <a (click)="toggleDropDown()">Servicios</a>
+        <div *ngIf="showDropDown">
+          <hr>
             <li>
-              <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
+              <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/noticias']">Noticias</a>
             </li>
-            <li >
-              <a (click)="toggleDropDown()">Servicios</a>
-              <div *ngIf="showDropDown">
-                <hr>
-                  <li>
-                    <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/noticias']">Noticias</a>
-                  </li>
-                  <li>
-                    <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/cursos']">Cursos</a>
-                  </li>
-                  <li>
-                    <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/nuestras_instalaciones']">Instalaciones</a>
-                  </li>
-                <hr>
-              </div>
+            <li>
+              <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/cursos']">Cursos</a>
             </li>
-            <li >
-              <a class="nav-link" (click)="closeNav()" data-toggle="collapse" [routerLink]="['/contacto']">Contacto</a>
+            <li>
+              <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/nuestras_instalaciones']">Instalaciones</a>
             </li>
-        
-          <div class="text-center">
-            <a class="" [routerLink]="['/login']" (click)="closeNav()"><img src="/assets/img/logo-login.png" width="40px"></a>
-          </div>      
+          <hr>
+        </div>
+      </li>
+      <li >
+        <a class="nav-link" (click)="closeNav()" data-toggle="collapse" [routerLink]="['/contacto']">Contacto</a>
+      </li>     
     </div>
   
   </div>
