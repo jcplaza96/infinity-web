@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from "@angular/router";
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -18,6 +18,9 @@ declare var $: any;
 export class LoginSignComponent implements OnInit {
   target: any;
 
+  onSubmit(f: NgForm){
+    
+  }
   constructor(private conexion: FuncionesGlobalesService, private  authService:  AuthService, private router: Router) { }
 
 

@@ -53,6 +53,7 @@ import { FilesComponent } from './components/firebase/files/files.component';
 import { LoginSignComponent } from './components/login-sign/login-sign.component';
 import { FuncionesGlobalesService } from './services/funciones-globales.service';
 import { CookiesComponent } from './components/cookies/cookies.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -115,7 +116,8 @@ const routes: Routes = [
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule
   ],
   providers: [ FirebaseService,FirebaseStorageService,FuncionesGlobalesService ],
   bootstrap: [AppComponent]
