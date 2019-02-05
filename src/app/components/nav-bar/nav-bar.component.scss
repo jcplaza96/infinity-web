@@ -50,7 +50,7 @@ hr{
   background-color: white;
 }
 
-.overlay li{
+li{
   list-style: none;
 }
 
@@ -113,6 +113,7 @@ hr{
 .dropdown-container{
   transition: transform 300ms linear;
   will-change: transform;
+  
 }
 
 #notificacion {

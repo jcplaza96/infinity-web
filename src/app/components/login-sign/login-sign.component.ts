@@ -29,7 +29,7 @@ export class LoginSignComponent implements OnInit {
   register(email, password, nombre, apellido){
     this.authService.registerUser(email, password)
     .then((res)=>{
-      var user = this.authService.isLoggedIn();
+      var user = this.authService.getCurrentUser();
       user.updateProfile({
         displayName: nombre +' '+ apellido,
         photoURL: ''
@@ -53,7 +53,7 @@ export class LoginSignComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.authService.isLoggedIn());
+    console.log(this.authService.getCurrentUser());
     this.efectosLogin();
     this.conexion.navBar.setBackgroundDark();
   }

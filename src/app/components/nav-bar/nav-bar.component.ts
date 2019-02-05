@@ -11,6 +11,8 @@ declare let $:any;
 })
 export class NavBarComponent implements OnInit {
 
+  userName: string = "";
+  logged:boolean = false;
   scrolled:boolean = false;
   showMenu:boolean = false;
   showDropDown:boolean = false;
@@ -33,7 +35,7 @@ export class NavBarComponent implements OnInit {
     if(!this.getCookie("notificacion")) {
       this.notificacion = true;
     }
-
+    this.isLogged();
   }
 
       /* Open when someone clicks on the span element */
@@ -54,9 +56,23 @@ export class NavBarComponent implements OnInit {
     this.showDropDown = !this.showDropDown;
   }
 
+  isLogged(){
+    this.authService.isLoggedIn().subscribe(auth =>{
+      if(auth){
+        this.userName =auth.displayName;
+        this.logged = true;
+      }else{
+        this.logged = false;
+      }
+    });
+  }
+
+  logout(){
+    this.authService.logoutUser();
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
-
     const number = window.pageYOffset;
     if (number > 50) {
       this.scrolled = true;
