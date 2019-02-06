@@ -37,6 +37,8 @@ export class FirebaseComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
+    setTimeout(()=>{}, 20000);
+    console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
   addItem(section: string,tittle: string,description: string, origen: string){
