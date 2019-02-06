@@ -54,6 +54,7 @@ import { LoginSignComponent } from './components/login-sign/login-sign.component
 import { FuncionesGlobalesService } from './services/funciones-globales.service';
 import { CookiesComponent } from './components/cookies/cookies.component';
 import { FormsModule } from '@angular/forms';
+import { AdminGuard } from './guards/admin.guard';
 
 
 
@@ -75,7 +76,7 @@ const routes: Routes = [
   { path: 'jcgame', component: JuanCarlosComponent },
   { path: 'agame', component: AngelComponent },
   { path: 'login', component: LoginSignComponent },
-  { path: 'admin', component: FirebaseComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: FirebaseComponent, canActivate: [AuthGuard , AdminGuard] },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

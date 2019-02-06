@@ -18,6 +18,8 @@ export class NavBarComponent implements OnInit {
   showDropDown:boolean = false;
   black: boolean = false;
   notificacion: boolean = false;
+  isAdmin: any = null;
+
 
 
   constructor(private  authService:  AuthService) { }
@@ -35,6 +37,7 @@ export class NavBarComponent implements OnInit {
     if(!this.getCookie("notificacion")) {
       this.notificacion = true;
     }
+    
     this.isLogged();
   }
 
@@ -61,6 +64,9 @@ export class NavBarComponent implements OnInit {
       if(auth){
         this.userName =auth.displayName;
         this.logged = true;
+        this.authService.isUserAdmin(auth.uid).subscribe(userRole=>{
+          this.isAdmin = Object.assign({},userRole.roles).admin;
+        })
       }else{
         this.logged = false;
       }

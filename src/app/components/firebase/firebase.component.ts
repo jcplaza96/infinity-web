@@ -5,6 +5,8 @@ import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/te
 import { stringify } from '@angular/core/src/util';
 import { FirebaseStorageService } from '../../services/storage/firebase-storage.service';
 import { map } from 'rxjs/operators';
+import { Router } from "@angular/router";
+
 
 export interface Item { description: string, image: string, tittle: string, origen?: string; }
 
@@ -31,7 +33,7 @@ export class FirebaseComponent implements OnInit {
   event: Event;
   item;
 
-  constructor(private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
+  constructor(public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getCurrentUser();
@@ -93,7 +95,7 @@ export class FirebaseComponent implements OnInit {
     this.authService.isLoggedIn().subscribe(auth=>{
       if(auth){
         this.authService.isUserAdmin(auth.uid).subscribe(userRole=>{
-          this.isAdmin = Object.assign({},userRole.roles).hasOwnProperty('admin');
+          this.isAdmin = Object.assign({},userRole.roles).admin;
         })
       }
     })
