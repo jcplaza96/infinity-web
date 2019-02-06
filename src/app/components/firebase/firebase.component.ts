@@ -38,13 +38,16 @@ export class FirebaseComponent implements OnInit {
   }
   
   addItem(section: string,tittle: string,description: string, origen: string){
-    if(tittle != '' && description != ''){
+    console.log("traza1");
+    //if(tittle != '' && description != ''){
+      console.log("Traza2");
       this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
         res.ref.getDownloadURL().then(url => {
           this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
+          this.fb.addItem("recursos",{description: description,tittle: tittle, image: url, origen: "Recursos"});
         })
       })
-    }
+    //}
   }
   
   getFile(event){
@@ -93,9 +96,15 @@ export class FirebaseComponent implements OnInit {
     this.authService.isLoggedIn().subscribe(auth=>{
       if(auth){
         this.authService.isUserAdmin(auth.uid).subscribe(userRole=>{
-          this.isAdmin = Object.assign({},userRole.roles).hasOwnProperty('admin');
+          this.isAdmin = Object.assign({},userRole.roles).admin;
         })
       }
     })
+  }
+
+  prueba(section: string,tittle: string,description: string, origen: string){
+    console.log(section);
+    console.log(tittle);
+    console.log(description);
   }
 }
