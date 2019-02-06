@@ -205,3 +205,17 @@ textarea {
   margin-top:-20px;
   text-align:right;
 }
+
+svg{
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 660px) {
+  #loginGoogle{
+    display: none;
+  }
+  svg{
+    width:13%;
+    margin-right: 0%;
+  }
+}
