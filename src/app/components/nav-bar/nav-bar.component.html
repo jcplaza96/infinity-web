@@ -26,7 +26,7 @@
     </ul>
   </div>
   <div class="form-inline my-2 my-lg-0 d-flex">
-    <span *ngIf='logged' class="nav-link texto-titulo">Bienvenido {{userName}}</span>
+    <span id="bienvenido" *ngIf='logged' class="nav-link texto-titulo">Bienvenido {{userName}}</span>
     <i id="notificacion"  (click)="quitarnotificacion()" class="btn far fa-bell"></i>
 
     <a class="navbar-brand ml-1" *ngIf="!logged" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>

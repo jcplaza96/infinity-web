@@ -19,6 +19,9 @@
     .navbar-dark {
       background-color: $fondo_footer/*rgba(0, 0, 0, 1)*/ !important;
     }
+    #bienvenido{
+      display : none;
+    }
   }
 
   .nav-item{

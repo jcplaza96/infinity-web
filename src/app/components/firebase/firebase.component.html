@@ -12,15 +12,14 @@
         
         <div class="col-6">
           <form class="">
-            <label>Sección:</label><br><select #section>
-              <option value="recursos">Recursos</option>
+            <label>Sección:</label><br><select #newsection>
               <option value="ninstalaciones">Instalaciones</option>
               <option value="noticias">Noticias</option>
               <option value="cursos">Cursos</option>
             </select> <br>
-            <label class="mt-2">Título:</label><br><input type="text" #tittle  required> <br>
+            <label class="mt-2">Título:</label><br><input type="text" #newtittle required> <br>
             
-            <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #description required></textarea> <br>
+            <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #newdescription required></textarea> <br>
             <div class="container-fluid mt-4">
               <span class="nuestroinput">
                 <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
@@ -29,7 +28,7 @@
                 <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
               </span>
               <!-- <button (click)="uploadFile()" >Subir archivo</button> -->
-              <button (click)="addItem(section.value,tittle.value,description.value,section.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
+              <button type="submit" (click)="addItem(newsection.value,newtittle.value,newdescription.value,newsection.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
             </div>
           </form>
         </div>

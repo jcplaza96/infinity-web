@@ -19,7 +19,7 @@ export class LoginSignComponent implements OnInit {
   target: any;
 
   onSubmit(f: NgForm){
-    
+    alert("hola");
   }
   constructor(private conexion: FuncionesGlobalesService, private  authService:  AuthService, private router: Router) { }
 
