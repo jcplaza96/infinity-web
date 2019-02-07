@@ -4,6 +4,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserInterface } from '../../models/user'
+
 
 
 declare var jQuery: any;
@@ -17,28 +20,31 @@ declare var $: any;
 })
 export class LoginSignComponent implements OnInit {
   target: any;
-
+  
   onSubmit(f: NgForm){
     alert("hola");
   }
-  constructor(private conexion: FuncionesGlobalesService, private  authService:  AuthService, private router: Router) { }
-
+  constructor(private afs: AngularFirestore, private conexion: FuncionesGlobalesService, private  authService:  AuthService, private router: Router) { }
 
   logout(){
     this.authService.logoutUser();
     this.router.navigate(['/']);
   }
 
-  register(email, password, nombre, apellido){
-    this.authService.registerUser(email, password)
-    .then((res)=>{
-      var user = this.authService.getCurrentUser();
-      user.updateProfile({
-        displayName: nombre +' '+ apellido,
-        photoURL: ''
-      });
-      this.router.navigate(['/']);
-    }).catch(err=> console.log('err', err.message));
+  register(email, password, name, apellido1, apellido2, fecha, cp, pais, telefono){
+    if(this.comprobarPassword(password)){
+      this.authService.registerUser(email, password)
+      .then((res)=>{
+        var user = this.authService.getCurrentUser();
+        user.updateProfile({
+          displayName: name,
+          photoURL: '',
+        });
+        this.updateUserData(user, name, apellido1, apellido2, fecha, cp, pais, telefono);
+        this.router.navigate(['/']);
+      }).catch(err=> console.log('err', err.message));
+    }
+    
   }
 
   loginEmail(email, password): void{
@@ -46,6 +52,30 @@ export class LoginSignComponent implements OnInit {
     .then((res)=>{
       this.router.navigate(['/']);
     }).catch(err=> console.log('err', err.message));
+  }
+
+  comprobarPassword(password){
+    var passwordstrength = password;
+    var regex = new Array();
+    regex.push("[A-Z]"); //Uppercase Alphabet.
+    regex.push("[a-z]"); //Lowercase Alphabet.
+    regex.push("[0-9]"); //Digit.
+    regex.push("[!@#$%^&*]"); //Special Character.
+
+    var passed = 0;
+    for (var i = 0; i < regex.length; i++) {
+        if (new RegExp(regex[i]).test(passwordstrength.value)) {
+            passed++;
+        }
+    }
+
+    if (passed > 3) {
+        return true;
+    }
+    else {
+        alert("Password must contain at least 1 capital letter,\n\n1 small letter, 1 number and 1 special character.\n\nFor special characters you can pick one of these -,(,!,@,#,$,),%,<,>");
+        return false;
+    }
   }
 
   loginGoogle(): void{
@@ -63,6 +93,26 @@ export class LoginSignComponent implements OnInit {
 
   ngOnDestroy() {
     this.conexion.navBar.setBackgroundlight();
+  }
+
+  private updateUserData(user, name, apellido1, apellido2, fecha, cp, pais, telefono){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: UserInterface = {
+      name: name,
+      surname1: apellido1,
+      surname2: apellido2,
+      birthday: fecha,
+      cp: cp,
+      country: pais,
+      phoneNumber: telefono,
+
+      roles:{
+        admin: false,
+        editor: false,
+        reader: true
+      }
+    }
+    return userRef.set(data, {merge:true})
   }
 
   efectosLogin() {
