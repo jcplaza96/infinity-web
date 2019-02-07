@@ -14,7 +14,7 @@
 
     <div class="tab-content">
       <div id="signup">
-        <form #f = "ngForm" (ngSubmit)="register(registerEmail.value, registerPassword.value, registerNombre.value, registerApellido1.value)"  action="">
+        <form ngNativeValidate #f = "ngForm" (ngSubmit)="register(registerEmail.value, registerPassword.value, registerNombre.value, registerApellido1.value, registerApellido2.value, registerFechaNac.value , registerCP.value, registerPais.value , registerTelefono.value)"  action="">
         <h1>Regístrate</h1>
 
         <div action="/" method="post">
@@ -94,7 +94,7 @@
       </div>
     
       <div id="login">
-        <form #f = "ngForm" (ngSubmit)="loginEmail(userEmail.value, userPassword.value)"  action="">
+        <form ngNativeValidate #f = "ngForm" (ngSubmit)="loginEmail(userEmail.value, userPassword.value)"  action="">
         <h1>Bienvenido de nuevo</h1>
 
         <div>
