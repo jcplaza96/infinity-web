@@ -31,8 +31,8 @@ export class LoginSignComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  register(email, password, name, apellido1, apellido2, fecha, cp, pais, telefono){
-    if(this.comprobarPassword(password)){
+  register(email, password, name, apellido1, apellido2, fecha, cp, pais, telefono, captcha){
+    if(this.comprobarCaptcha(captcha) && this.comprobarPassword(password)){
       this.authService.registerUser(email, password)
       .then((res)=>{
         var user = this.authService.getCurrentUser();
@@ -54,6 +54,16 @@ export class LoginSignComponent implements OnInit {
     }).catch(err=> console.log('err', err.message));
   }
 
+  comprobarCaptcha(captcha){
+    if(captcha=="V4XBG"){
+      return true;
+    }else{
+      alert("Captcha incorrecto");
+      return false;
+    }
+    
+  }
+
   comprobarPassword(password){
     var passwordstrength = password;
     var regex = new Array();
@@ -64,7 +74,7 @@ export class LoginSignComponent implements OnInit {
 
     var passed = 0;
     for (var i = 0; i < regex.length; i++) {
-        if (new RegExp(regex[i]).test(passwordstrength.value)) {
+        if (new RegExp(regex[i]).test(passwordstrength)) {
             passed++;
         }
     }
