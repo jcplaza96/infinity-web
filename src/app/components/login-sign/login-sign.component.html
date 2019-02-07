@@ -14,27 +14,32 @@
 
     <div class="tab-content">
       <div id="signup">
-        <form #f = "ngForm" (ngSubmit)="register(registerEmail.value, registerPassword.value, registerNombre.value, registerApellido.value)"  action="">
+        <form #f = "ngForm" (ngSubmit)="register(registerEmail.value, registerPassword.value, registerNombre.value, registerApellido1.value)"  action="">
         <h1>Regístrate</h1>
 
         <div action="/" method="post">
 
-          <div class="top-row">
+          
+        <div class="field-wrap">
+          <label>
+            Nombre<span class="req">*</span>
+          </label>
+          <input type="text" #registerNombre required autocomplete="off" />
+        </div>
+        <div class="top-row">
             <div class="field-wrap">
               <label>
-                Nombre<span class="req">*</span>
+                  Apellido 1<span class="req">*</span>
               </label>
-              <input type="text" #registerNombre required autocomplete="off" />
+              <input type="text" #registerApellido1 required autocomplete="off" />
             </div>
-
             <div class="field-wrap">
               <label>
-                Apellido<span class="req">*</span>
+                Apellido 2<span class="req">*</span>
               </label>
-              <input type="text" #registerApellido required autocomplete="off" />
+              <input type="text" #registerApellido2 required autocomplete="off" />
             </div>
-          </div>
-
+        </div>
           <div class="field-wrap">
             <label>
               Correo electrónico<span class="req">*</span>
@@ -48,6 +53,32 @@
             </label>
             <input type="password" #registerPassword required />
           </div>
+
+          <div class="field-wrap">
+            <input type="date" #registerFechaNac required/>
+            <span id="fecha">Fecha nacimiento</span>
+          </div>
+
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                País<span class="req">*</span>
+              </label>
+              <input type="text" #registerPais required autocomplete="off" />
+            </div>
+            <div class="field-wrap">
+              <label>
+                CP<span class="req">*</span>
+              </label>
+              <input type="text" #registerCP required autocomplete="off" />
+            </div>
+        </div>
+        <div class="field-wrap">
+          <label>
+            Teléfono<span class="req">*</span>
+          </label>
+          <input type="text" #registerTelefono required autocomplete="off" />
+        </div>
 
           <button class="button button-block" type="submit">Registrarse</button>
 
