@@ -119,6 +119,15 @@ li{
   
 }
 
+#centrar {
+  text-align: center;
+}
+
 #notificacion {
   color: $color_letras;
+  //margin-right: 50px;
+}
+
+#aceptaCookieNotificacion {
+  color: $color_letras !important;
 }
