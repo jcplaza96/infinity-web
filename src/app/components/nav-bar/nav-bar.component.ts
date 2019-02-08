@@ -113,7 +113,8 @@ export class NavBarComponent implements OnInit {
 
   quitarnotificacion() {
     this.setCookie("notificacion", true, 30);
-    this.notificacion = false;
+    //this.notificacion = false;
+    document.getElementById("notificacion").style.display = "none";
   }
 
 }

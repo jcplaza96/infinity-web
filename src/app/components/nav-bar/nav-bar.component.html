@@ -27,7 +27,16 @@
   </div>
   <div class="form-inline my-2 my-lg-0 d-flex">
     <span id="bienvenido" *ngIf='logged' class="nav-link texto-titulo">Bienvenido {{userName}}</span>
-    <i id="notificacion"  (click)="quitarnotificacion()" class="btn far fa-bell"></i>
+
+    <!-- Inicio cookie notificación -->
+    <li id="notificacion" class="nav-item dropleft" routerLinkActive="active">
+      <div id="centrar" class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a id="aceptaCookieNotificacion" class="texto-subtitulos" data-toggle="collapse">Nuevas noticias</a><br>
+        <button type="button" class="btn btn-danger" (click)="quitarnotificacion()" [routerLink]="['/noticias']">Ir a noticias</button>
+      </div>
+      <i class="nav-link btn far fa-bell" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+    </li>
+    <!-- Fin cookie notificación -->
 
     <a class="navbar-brand ml-1" *ngIf="!logged" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
     
