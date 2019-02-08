@@ -1,6 +1,13 @@
 @import "../../../assets/scss/variables.scss";
 
-
+#header{
+    height: 12vh;
+    // min-height: 188px !important;
+    // max-height: 220px;
+    @media only screen and (max-width: 992px) {
+      height: 15vh;
+  }
+}
 input[type="file"]#nuestroinput {
     width: 0.1px;
     height: 0.1px;

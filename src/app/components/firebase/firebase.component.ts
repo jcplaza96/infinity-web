@@ -38,7 +38,7 @@ export class FirebaseComponent implements OnInit {
   ngOnInit() {
     this.getCurrentUser();
     setTimeout(()=>{}, 20000);
-    console.log(this.authService.afAuth.auth.currentUser.metadata);
+  //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
   addItem(section: string,tittle: string,description: string, origen: string){
@@ -86,7 +86,7 @@ export class FirebaseComponent implements OnInit {
   }
 
   update(id,path,title,description){
-      console.log(description);
+  //    console.log(description);
     this.fb.update(id,path,{tittle: title,description: description});
   }
 

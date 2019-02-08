@@ -55,6 +55,7 @@ import { FuncionesGlobalesService } from './services/funciones-globales.service'
 import { CookiesComponent } from './components/cookies/cookies.component';
 import { FormsModule } from '@angular/forms';
 import { AdminGuard } from './guards/admin.guard';
+import { EditableItemComponent } from './components/editable-item/editable-item.component';
 
 
 
@@ -109,6 +110,7 @@ const routes: Routes = [
     FilesComponent,
     LoginSignComponent,
     CookiesComponent,
+    EditableItemComponent,
   ],
   imports: [
     BrowserModule,
