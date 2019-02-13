@@ -41,7 +41,6 @@ export class ItemListComponent implements OnInit {
       actions.forEach(action => {
         this.items.push({id: action.payload.doc.id, ...action.payload.doc.data()});
       });
-      console.log(this.items);
     })
   }
 

@@ -23,9 +23,8 @@ export class EditableItemComponent implements OnInit {
 
 
   update(){
-    
     this.fb.update(this.i.id,this.i.origen,{tittle: this.i.tittle,description: this.i.description});
-  
+    this.i = false;
   }
 
   delete(){
