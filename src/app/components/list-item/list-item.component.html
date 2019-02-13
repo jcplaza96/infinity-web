@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div>
-            <img src="{{imagen}}">
+            <img src="{{i.image}}">
         </div>       
        <div>
             <div class="row">
                 <div class="col-md-12 mt-4 ml-2">
                     <!-- Inyeción Título -->
-                    <h4>{{tittle}}</h4>
+                    <h4>{{i.tittle}}</h4>
                 </div>
                 <div class="col-md-12 ml-2" *ngIf="!seeMore">
                     <p>
@@ -19,7 +19,7 @@
                     <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
                     <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
                     
-                    <div *ngIf="seeMore">{{description}}</div>
+                    <div *ngIf="seeMore">{{i.description}}</div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item { description: string, image: string, tittle: string, origen?: string; }
+export interface Item {id?:string; description: string, image: string, tittle: string, origen?: string; }
 
 
 @Injectable({
@@ -44,4 +44,10 @@ export class FirebaseService {
   delete(id,path){
     this.afs.collection(path).doc(id).delete();
   }
+
+  getAllSection(section: string){
+    return this.afs.collection(section).snapshotChanges();
+  }
+
+
 }

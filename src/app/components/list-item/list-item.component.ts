@@ -1,5 +1,6 @@
 import { FirebaseStorageService } from './../../services/storage/firebase-storage.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { Item } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-list-item',
@@ -8,9 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
-  @Input() imagen: string;
-  @Input() tittle: string;
-  @Input() description: string;
+  @Input() i: Item;
   @Input() id: string;
   
   shortDescription: string = "";
@@ -19,7 +18,7 @@ export class ListItemComponent implements OnInit {
   }
   
   ngOnInit() {
-    let desc = this.description.split(" ");
+    let desc = this.i.description.split(" ");
     //console.log(desc);
     for (let index = 0; index < 13 && desc[index] != null; index++) {
       this.shortDescription = this.shortDescription.concat(desc[index] + " ");

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ListItemComponent } from '../list-item/list-item.component';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { Item } from '../../services/firebase.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class ItemListComponent implements OnInit {
   contenido;carga;
-  items: any;
+  items: any[] = [];
   @Input() parent: string;
   id: string;
   constructor(private conexion: FirebaseService) {
@@ -24,15 +25,25 @@ export class ItemListComponent implements OnInit {
     this.carga = document.getElementById("carga");
     this.contenido = document.getElementById("contenido");
     this.id = this.parent;
-    this.conexion.listaItem(this.parent).subscribe(item =>{
-      this.items = item;     
-    })
-
+    // this.conexion.listaItem(this.parent).subscribe(item =>{
+    //   this.items = item;     
+    // })
+    this.getItems();
     setTimeout(() => {
       this.carga.className = "d-none";
       this.contenido.className = "container";
     },2000)
     window.scrollTo(0,0);
   }
+
+  getItems(){
+    this.conexion.getAllSection(this.parent).subscribe(actions => {
+      actions.forEach(action => {
+        this.items.push({id: action.payload.doc.id, ...action.payload.doc.data()});
+      });
+      console.log(this.items);
+    })
+  }
+
 
 }
