@@ -9,15 +9,15 @@
             <!-- Inyeción Título -->
             <h4>{{i.tittle}}</h4>
         </div>
-        <div class="col-md-12 ml-2" *ngIf="!seeMore">
-            <p>
+        <div class="col-md-12 ml-2" *ngIf="!seeMore" innerHTML="{{shortDescription}}">
+            
                 <!-- Inyección componente  -->
-                {{shortDescription}}
-            </p>
+                
+            
         </div>
         <div class="col-md-12 col-12 ml-2">
             
-            <div *ngIf="seeMore">{{i.description}}</div>
+            <div *ngIf="seeMore" innerHTML="{{i.description}}"></div>
             <div class="row">
                 <div class="col-7">
                     <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>

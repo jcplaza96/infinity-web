@@ -35,7 +35,7 @@
               <label class="mt-2">Título: </label><input class="form-control" type="text" #newtittle required>
             </div>
             <div class="form-group">
-              <label class="mt-2">Descripción:</label><br><editor apiKey="test" [init]="{plugins: 'link'}"></editor>
+              <label class="mt-2">Descripción:</label><br><editor name="newd" [(ngModel)]="newd" apiKey="test" [init]="{plugins: 'link'}"  #newdescription></editor>
               <div id="prueba"></div>
             </div>
             <div class="container-fluid mt-4">
@@ -47,7 +47,7 @@
                 <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
               </span>
               <button type="submit"
-                (click)="addItem(newsection.value,newtittle.value,newdescription.value,newsection.value)"
+                (click)="addItem(newsection.value,newtittle.value,newd,newsection.value)"
                 class="btn btn-danger mt-1" false>Añadir artículo</button>
             </div>
           </form>

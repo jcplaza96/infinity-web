@@ -47,7 +47,7 @@ export class FirebaseComponent implements OnInit, AfterViewInit {
   }
   data2: UserInterface = this.data;
 
-   quill: any;
+   newd: string;
    action: string = "list";
    contenido: boolean;
    usuarios: boolean;
@@ -80,6 +80,7 @@ export class FirebaseComponent implements OnInit, AfterViewInit {
   }
 
   init(){
+    this.editableItem = false;
     this.items = [];
     this.SECTIONS.forEach(section => {
       this.fb.getAllSection(section).subscribe(actions => {
@@ -93,7 +94,6 @@ export class FirebaseComponent implements OnInit, AfterViewInit {
 
   addItem(section: string,tittle: string,description: string, origen: string){
    
-      
       this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
         res.ref.getDownloadURL().then(url => {
           this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
@@ -137,6 +137,7 @@ export class FirebaseComponent implements OnInit, AfterViewInit {
   update(id,path,title,description){
   //    console.log(description);
     this.fb.update(id,path,{tittle: title,description: description});
+    this.editableItem = false;
   }
 
   delete(id,path){
