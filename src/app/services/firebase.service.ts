@@ -52,6 +52,12 @@ export class FirebaseService {
     }
   }
 
+  getItemById(section: string, id: string){
+    
+    return this.afs.collection(section).doc(id).snapshotChanges();
+  }
+
+
   /**
    * Actualiza campos de un item concreto
    * @param id ID item
