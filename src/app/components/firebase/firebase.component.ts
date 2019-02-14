@@ -17,6 +17,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { UserInterface } from '../../models/user'
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
+import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
+
 
 @Component({
   selector: 'app-firebase',
@@ -53,10 +55,11 @@ export class FirebaseComponent implements OnInit {
   event: Event;
   item;
 
-  constructor(private afs: AngularFirestore, public router: Router, private fb: FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
+  constructor(private fg: FuncionesGlobalesService, private afs: AngularFirestore, public router: Router, private fb: FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getCurrentUser();
+    this.fg.navBar.setBackgroundDark();
     setTimeout(() => { }, 20000);
     //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
@@ -162,5 +165,9 @@ export class FirebaseComponent implements OnInit {
     console.log(section);
     console.log(tittle);
     console.log(description);
+  }
+
+  ngOnDestroy() {
+    this.fg.navBar.setBackgroundlight();
   }
 }
