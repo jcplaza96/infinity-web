@@ -18,6 +18,7 @@ import { NgForm } from '@angular/forms';
 import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
 
 import { initDomAdapter } from '@angular/platform-browser/src/browser';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-firebase',
@@ -29,6 +30,24 @@ export class FirebaseComponent implements OnInit {
   /**
    * Flags declaration
    */
+
+  data: UserInterface = {
+    id: '',
+    name: '',
+    surname1: '',
+    surname2: '',
+    birthday: '',
+    cp: '',
+    country: '',
+    phoneNumber: '',
+
+    roles: {
+      admin: false,
+      editor: false,
+      reader: true
+    }
+  }
+
    action: string = "list";
    contenido: boolean;
    usuarios: boolean;
@@ -40,10 +59,11 @@ export class FirebaseComponent implements OnInit {
   editableItem;
   newItem: boolean = false;
   items: any[] = [];
-  constructor(public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
+  constructor(private fg: FuncionesGlobalesService, private afs: AngularFirestore, public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getCurrentUser();
+    this.fg.navBar.setBackgroundDark();
     setTimeout(()=>{}, 20000);
     this.init();
     
@@ -129,6 +149,38 @@ export class FirebaseComponent implements OnInit {
     this.newItem = true;
     this.editableItem = null;
     
+  }
+
+  updateUser(uid) {
+    //if (!f.valid) return;
+    try{
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${uid}`);
+      userRef.set(this.data, {merge:true});
+      alert("Usuario actualizado correctamente");
+    }catch(error){
+      alert("Error al actualizar el usuario: " + error);
+    }
+    
+  }
+
+  findUser(email) {
+    let aux;
+    try {
+      let ref = this.afs.collection("users", ref => ref.where("email", "==", email));
+      aux = ref.snapshotChanges();
+    } catch (error) {
+      aux = false;
+    }
+
+    if (aux != false) {
+      aux.subscribe(actions => {
+        try {
+          this.data ={...actions[0].payload.doc.data() };
+        } catch (error) {
+          alert("Ese email no corresponde a ningún usuario registrado en la página")
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
