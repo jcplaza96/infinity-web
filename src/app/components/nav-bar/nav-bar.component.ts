@@ -65,7 +65,7 @@ export class NavBarComponent implements OnInit {
         this.userName =auth.displayName;
         this.logged = true;
         this.authService.isUserAdmin(auth.uid).subscribe(userRole=>{
-          this.isAdmin = Object.assign({},userRole.roles).admin;
+          this.isAdmin = Object.assign({},userRole).admin;
         })
       }else{
         this.logged = false;

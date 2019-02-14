@@ -8,11 +8,13 @@ img {
 .button-like {
   background-color: transparent;
   cursor: pointer;
-  position: relative;
+  position: absolute;
   text-align: center;
   display: inline-block;
   border: none;
   color: darkgray;
+  bottom: 5px;
+  right: 5px;
 
   span {
     margin-left: 0.5rem;

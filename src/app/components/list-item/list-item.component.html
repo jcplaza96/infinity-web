@@ -1,40 +1,38 @@
 <div class="container mt-2">
+    
+    <div>
+        <img src="{{i.image}}">
+    </div>       
+    
     <div class="row">
-        <div>
-            <img src="{{i.image}}">
-        </div>       
-       <div>
+        <div class="col-md-12 mt-4 ml-2">
+            <!-- Inyeción Título -->
+            <h4>{{i.tittle}}</h4>
+        </div>
+        <div class="col-md-12 ml-2" *ngIf="!seeMore">
+            <p>
+                <!-- Inyección componente  -->
+                {{shortDescription}}
+            </p>
+        </div>
+        <div class="col-md-12 col-12 ml-2">
+            
+            <div *ngIf="seeMore">{{i.description}}</div>
             <div class="row">
-                <div class="col-md-12 mt-4 ml-2">
-                    <!-- Inyeción Título -->
-                    <h4>{{i.tittle}}</h4>
+                <div class="col-7">
+                    <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
+                    <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
                 </div>
-                <div class="col-md-12 ml-2" *ngIf="!seeMore">
-                    <p>
-                        <!-- Inyección componente  -->
-                        {{shortDescription}}
-                    </p>
-                </div>
-                <div class="col-md-12 col-12 ml-2">
-                    
-                    <div *ngIf="seeMore">{{i.description}}</div>
-                        <div class="row">
-                            <div class="col-7">
-                                <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
-                                <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
-                            </div>
-                        </div>
-                        <br>
-                </div>
-
-                <!-- Botón Like -->
-                <button id="{{this.i.id}}" class="button button-like" (click)="contador(this.i.id)">
-                    <i class="fa fa-heart"></i>
-                    <span>Me gusta</span>
-                </button>&nbsp;
-                <!-- Fin botón Like -->
-                {{this.numLikes}}
             </div>
+
         </div>
     </div>
+    <!-- Botón Like -->
+    <button id="{{this.i.id}}" class="button button-like" (click)="contador(this.i.id)">
+        <i class="fa fa-heart"></i>
+        <span>Me gusta</span>
+    </button>&nbsp;
+    <!-- Fin botón Like -->
+    {{this.numLikes}}
+    
 </div>

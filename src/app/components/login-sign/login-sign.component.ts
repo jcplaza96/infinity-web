@@ -115,12 +115,9 @@ export class LoginSignComponent implements OnInit {
       cp: cp,
       country: pais,
       phoneNumber: telefono,
-
-      roles:{
-        admin: false,
-        editor: false,
-        reader: true
-      }
+      admin: false,
+      editor: false,
+      reader: true,
     }
     return userRef.set(data, {merge:true})
   }
