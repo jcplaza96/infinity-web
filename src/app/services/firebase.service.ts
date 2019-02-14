@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item {id?:string; description: string, image: string, tittle: string, origen?: string; }
+export interface Item {id?:string; description: string, image: string, tittle: string, origen?: string, likes?: any}
 
 
 @Injectable({
