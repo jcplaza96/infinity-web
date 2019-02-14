@@ -12,6 +12,7 @@ import { FirebaseService } from '../../services/firebase.service';
 export class EditableItemComponent implements OnInit {
 
   @Input() i;
+  @Input() isNew: boolean;
   
   
   

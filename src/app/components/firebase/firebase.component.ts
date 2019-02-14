@@ -35,6 +35,7 @@ export class FirebaseComponent implements OnInit {
   event: Event;
   SECTIONS: string[] = ['ninstalaciones','noticias','cursos'];
   editableItem;
+  newItem: boolean = false;
   items: any[] = [];
   constructor(public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
@@ -52,7 +53,6 @@ export class FirebaseComponent implements OnInit {
         actions.forEach(action => {
           let id = action.payload.doc.id;
           this.items.push({id,origen: section ,...action.payload.doc.data()});
-
         })
       })
     });
@@ -60,15 +60,15 @@ export class FirebaseComponent implements OnInit {
 
   addItem(section: string,tittle: string,description: string, origen: string){
    
-    //if(tittle != '' && description != ''){
       
       this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
         res.ref.getDownloadURL().then(url => {
           this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
           this.fb.addItem("recursos",{description: description,tittle: tittle, image: url, origen: "Recursos"});
+          this.newItem = false;
         })
       })
-    //}
+    
   }
   
   getFile(event){
@@ -94,6 +94,7 @@ export class FirebaseComponent implements OnInit {
 
   getItem(id,section: string){ 
     this.editableItem = false;
+    this.newItem = false;
     console.log(id);
     this.fb.getItemById(section,id).subscribe(action => {
       this.editableItem = {id: action.payload.id, section: section, ...action.payload.data()};
@@ -121,8 +122,9 @@ export class FirebaseComponent implements OnInit {
     })
   }
 
-  editItem(id: string, section: string){
-    this.editableItem = false;
+  createNewItem(){
+    this.newItem = true;
+    this.editableItem = null;
     
   }
 }
