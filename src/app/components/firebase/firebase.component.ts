@@ -6,7 +6,7 @@ import { stringify } from '@angular/core/src/util';
 import { FirebaseStorageService } from '../../services/storage/firebase-storage.service';
 import { map } from 'rxjs/operators';
 import { Router } from "@angular/router";
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 export interface Item { description: string, image: string, tittle: string, origen?: string; }
 
