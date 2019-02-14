@@ -83,7 +83,7 @@ export class LoginSignComponent implements OnInit {
         return true;
     }
     else {
-        alert("Password must contain at least 1 capital letter,\n\n1 small letter, 1 number and 1 special character.\n\nFor special characters you can pick one of these -,(,!,@,#,$,),%,<,>");
+        alert("Password must contain at least 1 capital letter,\n\n1 small letter, 1 number and 1 special character.\n\nFor special characters you can pick one of these [!@#$%^&*]");
         return false;
     }
   }
