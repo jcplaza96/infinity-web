@@ -14,6 +14,11 @@ export interface Item { description: string, image: string, tittle: string, orig
 import { AngularFireAuth } from "@angular/fire/auth";
 import { UserInterface } from '../../models/user'
 import { AuthService } from 'src/app/services/auth.service';
+import { NgForm } from '@angular/forms';
+import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
+
+import { initDomAdapter } from '@angular/platform-browser/src/browser';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-firebase',
@@ -26,32 +31,72 @@ export class FirebaseComponent implements OnInit {
    * Flags declaration
    */
 
+  data: UserInterface = {
+    id: '',
+    name: '',
+    surname1: '',
+    surname2: '',
+    email: '',
+    birthday: '',
+    cp: '',
+    country: '',
+    phoneNumber: '',
+
+    roles: {
+      admin: false,
+      editor: false,
+      reader: true
+    }
+  }
+  data2: UserInterface = this.data;
+
+   action: string = "list";
    contenido: boolean;
    usuarios: boolean;
    isAdmin: any = null;
+   newUser: boolean = false;
+
 
   event: Event;
-  item;
-
-  constructor(public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
+  SECTIONS: string[] = ['ninstalaciones','noticias','cursos'];
+  editableItem;
+  newItem: boolean = false;
+  items: any[] = [];
+  constructor(private fg: FuncionesGlobalesService, private afs: AngularFirestore, public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getCurrentUser();
+    this.fg.navBar.setBackgroundDark();
     setTimeout(()=>{}, 20000);
+    this.init();
+    
+    
   //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
+  init(){
+    this.items = [];
+    this.SECTIONS.forEach(section => {
+      this.fb.getAllSection(section).subscribe(actions => {
+        actions.forEach(action => {
+          let id = action.payload.doc.id;
+          this.items.push({id,origen: section ,...action.payload.doc.data()});
+        })
+      })
+    });
+  }
+
   addItem(section: string,tittle: string,description: string, origen: string){
-    console.log("traza1");
-    //if(tittle != '' && description != ''){
-      console.log("Traza2");
+   
+      
       this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
         res.ref.getDownloadURL().then(url => {
           this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
           this.fb.addItem("recursos",{description: description,tittle: tittle, image: url, origen: "Recursos"});
+          this.newItem = false;
         })
       })
-    //}
+    
   }
   
   getFile(event){
@@ -75,14 +120,13 @@ export class FirebaseComponent implements OnInit {
   //     }))
   //   );
 
-  getItem(section: string,title: string){ 
-    this.item = false;
-    let aux = this.fb.getItem(section,title);
-    if(aux != false){
-      aux.subscribe(actions => {
-        this.item = {id: actions[0].payload.doc.id, ...actions[0].payload.doc.data()}
-      });
-    }
+  getItem(id,section: string){ 
+    this.editableItem = false;
+    this.newItem = false;
+    console.log(id);
+    this.fb.getItemById(section,id).subscribe(action => {
+      this.editableItem = {id: action.payload.id, section: section, ...action.payload.data()};
+    })
   }
 
   update(id,path,title,description){
@@ -92,7 +136,7 @@ export class FirebaseComponent implements OnInit {
 
   delete(id,path){
     this.fb.delete(id,path);
-    this.item = false;
+    this.editableItem = false;
   }
 
 
@@ -106,9 +150,67 @@ export class FirebaseComponent implements OnInit {
     })
   }
 
-  prueba(section: string,tittle: string,description: string, origen: string){
-    console.log(section);
-    console.log(tittle);
-    console.log(description);
+  createNewItem(){
+    this.newItem = true;
+    this.editableItem = null;
+    
+  }
+
+  updateUser(uid) {
+    //if (!f.valid) return;
+    try{
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${uid}`);
+      userRef.set(this.data, {merge:true});
+      alert("Usuario actualizado correctamente");
+    }catch(error){
+      alert("Error al actualizar el usuario: " + error);
+    }
+    
+  }
+
+  findUser(email) {
+    this.newUser=false;
+    let aux;
+    try {
+      let ref = this.afs.collection("users", ref => ref.where("email", "==", email));
+      aux = ref.snapshotChanges();
+    } catch (error) {
+      aux = false;
+    }
+
+    if (aux != false) {
+      aux.subscribe(actions => {
+        try {
+          this.data ={...actions[0].payload.doc.data() };
+        } catch (error) {
+          alert("Ese email no corresponde a ningún usuario registrado en la página")
+        }
+      });
+    }
+  }
+
+  createUser(password){
+      this.authService.registerUser(this.data2.email, password)
+      .then((res)=>{
+        var user = this.authService.getCurrentUser();
+        this.data2.id = user.uid;
+        user.updateProfile({
+          displayName: this.data2.name,
+          photoURL: '',
+        });
+        try{
+          const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+          userRef.set(this.data2, {merge:true});
+          alert("Usuario creado correctamente");
+        }catch(error){
+          alert("Error al crear el usuario: " + error);
+        }
+        this.router.navigate(['/']);
+      }).catch(err=> console.log('err', err.message));
+    }
+    
+
+  ngOnDestroy() {
+    this.fg.navBar.setBackgroundlight();
   }
 }

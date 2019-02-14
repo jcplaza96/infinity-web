@@ -8,6 +8,18 @@
       height: 15vh;
   }
 }
+
+#scroll{
+  height: 60vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+
+
+
 input[type="file"]#nuestroinput {
     width: 0.1px;
     height: 0.1px;

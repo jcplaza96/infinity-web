@@ -52,6 +52,12 @@ export class FirebaseService {
     }
   }
 
+  getItemById(section: string, id: string){
+    
+    return this.afs.collection(section).doc(id).snapshotChanges();
+  }
+
+
   /**
    * Actualiza campos de un item concreto
    * @param id ID item
@@ -60,7 +66,6 @@ export class FirebaseService {
    */
   update(id,path,data){
     this.afs.collection(path).doc(id).update({description: data.description, tittle: data.tittle});
-    console.log(data);
   }
 
   delete(id,path){

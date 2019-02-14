@@ -35,7 +35,7 @@ export class AuthService {
       .then(userData=>{
         resolve(userData),
         this.updateUserData(userData.user)
-      }).catch(err => console.log(reject(err)))
+      }).catch(err => alert(err))
     });
   }
 
@@ -68,18 +68,6 @@ export class AuthService {
     const data: UserInterface = {
       id: user.uid,
       email: user.email,
-      name: "",
-      surname1: "",
-      surname2: "",
-      birthday: "",
-      cp: "",
-      country: "",
-      phoneNumber: "", 
-      roles:{
-        reader:true,
-        admin:false,
-        editor:false
-      }
     }
     return userRef.set(data, {merge:true})
   }

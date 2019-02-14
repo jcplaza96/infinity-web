@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { UserInterface } from '../../models/user'
+import { UserInterface } from '../../models/user';
 
 
 
