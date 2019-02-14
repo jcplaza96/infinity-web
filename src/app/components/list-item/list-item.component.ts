@@ -12,33 +12,41 @@ export class ListItemComponent implements OnInit {
   radio: HTMLFormElement[];
   @Input() i: Item;
   @Input() id: string;
-  
+  liked: boolean = false;
+
 
   shortDescription: string = "";
   seeMore: boolean = false;
   constructor(private fbs: FirebaseStorageService) {
   }
-  
+
   ngOnInit() {
     this.getShortDescription();
     //console.log(document.getElementsByName("rating"));
 
-   }
+  }
 
-  toogleSeeMore(){
+  toogleSeeMore() {
     this.seeMore = !this.seeMore;
   }
 
-  getShortDescription(){
+  getShortDescription() {
     let desc = this.i.description.split(" ");
     //console.log(desc);
     for (let index = 0; index < 13 && desc[index] != null; index++) {
       this.shortDescription = this.shortDescription.concat(desc[index] + " ");
     }
-    if(desc.length > 13) this.shortDescription = this.shortDescription.concat("...");
+    if (desc.length > 13) this.shortDescription = this.shortDescription.concat("...");
   }
 
-  uRate(f: NgForm){
-    console.log(f.controls['rating'].value);
+  contador() {
+    this.liked = !this.liked;
+    var btn = <HTMLButtonElement>document.getElementById(this.i.id);
+
+    if (this.liked) {
+      btn.classList.add("coloredLike");
+    } else {
+      btn.classList.remove("coloredLike");
+    }
   }
 }
