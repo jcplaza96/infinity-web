@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FirebaseService, Item } from 'src/app/services/firebase.service';
 import { fbind } from 'q';
 import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/template';
@@ -25,7 +25,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
   templateUrl: './firebase.component.html',
   styleUrls: ['./firebase.component.scss']
 })
-export class FirebaseComponent implements OnInit {
+export class FirebaseComponent implements OnInit, AfterViewInit {
 
   /**
    * Flags declaration
@@ -50,6 +50,7 @@ export class FirebaseComponent implements OnInit {
   }
   data2: UserInterface = this.data;
 
+   quill: any;
    action: string = "list";
    contenido: boolean;
    usuarios: boolean;
@@ -74,6 +75,13 @@ export class FirebaseComponent implements OnInit {
   //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+
+    
+  }
+
   init(){
     this.items = [];
     this.SECTIONS.forEach(section => {
@@ -151,9 +159,9 @@ export class FirebaseComponent implements OnInit {
   }
 
   createNewItem(){
+
     this.newItem = true;
     this.editableItem = null;
-    
   }
 
   updateUser(uid) {
