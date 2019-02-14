@@ -74,6 +74,7 @@ export class FirebaseComponent implements OnInit {
   }
   
   init(){
+    this.items = [];
     this.SECTIONS.forEach(section => {
       this.fb.getAllSection(section).subscribe(actions => {
         actions.forEach(action => {

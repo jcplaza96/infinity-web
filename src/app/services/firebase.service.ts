@@ -66,7 +66,6 @@ export class FirebaseService {
    */
   update(id,path,data){
     this.afs.collection(path).doc(id).update({description: data.description, tittle: data.tittle});
-    console.log(data);
   }
 
   delete(id,path){
