@@ -18,5 +18,5 @@ export interface UserInterface {
     phoneNumber?: string;
     password?: string;
     photoUrl?: string;
-    roles: Roles;
+    roles?: Roles;
 }
