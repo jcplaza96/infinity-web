@@ -1,47 +1,38 @@
 <div class="container mt-2">
+    
+    <div>
+        <img src="{{i.image}}">
+    </div>       
+    
     <div class="row">
-        <div>
-            <img src="{{i.image}}">
-        </div>       
-       <div>
+        <div class="col-md-12 mt-4 ml-2">
+            <!-- Inyeción Título -->
+            <h4>{{i.tittle}}</h4>
+        </div>
+        <div class="col-md-12 ml-2" *ngIf="!seeMore">
+            <p>
+                <!-- Inyección componente  -->
+                {{shortDescription}}
+            </p>
+        </div>
+        <div class="col-md-12 col-12 ml-2">
+            
+            <div *ngIf="seeMore">{{i.description}}</div>
             <div class="row">
-                <div class="col-md-12 mt-4 ml-2">
-                    <!-- Inyeción Título -->
-                    <h4>{{i.tittle}}</h4>
-                </div>
-                <div class="col-md-12 ml-2" *ngIf="!seeMore">
-                    <p>
-                        <!-- Inyección componente  -->
-                        {{shortDescription}}
-                    </p>
-                </div>
-                <div class="col-md-12 col-12 ml-2">
-                    
-                    <div *ngIf="seeMore">{{i.description}}</div>
-                        <div class="row">
-                            <div class="col-7">
-                                <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
-                                <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
-                            </div>
-                            <div class="col-5">
-                                <ng-form action="" #f="ngForm" (click)="uRate(f)">               
-                                    <fieldset class="rating">
-                                        <input type="radio" id="star5" name="rating" #rating="ngModel" ngModel  value="5" alt=""/><label class = "full" for="star5" title="Maravilloso - 5 stars"></label>
-                                        <input type="radio" id="star4half" name="rating" #rating="ngModel" ngModel  value="4.5"/><label class="half" for="star4half" title="Muy bueno - 4.5 stars"></label>
-                                        <input type="radio" id="star4" name="rating" #rating="ngModel" ngModel  value="4" checked/><label class = "full" for="star4" title="Bueno - 4 stars"></label>
-                                        <input type="radio" id="star3half" name="rating" #rating="ngModel" ngModel  value="3.5" /><label class="half" for="star3half" title="Esta bien - 3.5 stars"></label>
-                                        <input type="radio" id="star3" name="rating" #rating="ngModel" ngModel  value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                        <input type="radio" id="star2half" name="rating" #rating="ngModel" ngModel  value="2.5" /><label class="half" for="star2half" title="No gusta - 2.5 stars"></label>
-                                        <input type="radio" id="star2" name="rating" #rating="ngModel" ngModel  value="2" /><label class = "full" for="star2" title="Malo - 2 stars"></label>
-                                        <input type="radio" id="star1half" name="rating" #rating="ngModel" ngModel  value="1.5" /><label class="half" for="star1half" title="No miro - 1.5 stars"></label>
-                                        <input type="radio" id="star1" name="rating" #rating="ngModel" ngModel  value="1" /><label class = "full" for="star1" title="Pérdida de tiempo - 1 star"></label>
-                                        <input type="radio" id="starhalf" name="rating" #rating="ngModel" ngModel value="0.5" /><label class="half" for="starhalf" title="Cierra el navegador - 0.5 stars"></label>
-                                    </fieldset>
-                                </ng-form>
-                            </div>
-                        </div>
+                <div class="col-7">
+                    <button class="btn btn-danger" *ngIf="!seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar Más</button>
+                    <button class="btn btn-danger" *ngIf="seeMore" (click)="toogleSeeMore()" mat-raised-button>Mostrar menos</button>
                 </div>
             </div>
+
         </div>
     </div>
+    <!-- Botón Like -->
+    <button *ngIf="logged"  [ngClass]="{'coloredLike': liked}"  id="{{this.i.id}}" class="button button-like" (click)="contador(this.i.id)">
+        {{this.numLikes}}
+        <i class="fa fa-heart"></i>
+        <span>Me gusta</span>
+    </button>&nbsp;
+    <!-- Fin botón Like -->
+
 </div>

@@ -31,7 +31,7 @@ export class AdminGuard {
   mapReturn(auth) {
     if(auth){
       return this.authService.isUserAdmin(this.afsAuth.auth.currentUser.uid)
-      .pipe(take(1)).pipe(map(result=>result.roles.admin))
+      .pipe(take(1)).pipe(map(result=>result.admin))
       .pipe(map(bools=>this.redirectIfFalse(bools))).toPromise();
     }
     return false;

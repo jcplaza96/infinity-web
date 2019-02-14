@@ -41,12 +41,9 @@ export class FirebaseComponent implements OnInit, AfterViewInit {
     cp: '',
     country: '',
     phoneNumber: '',
-
-    roles: {
-      admin: false,
-      editor: false,
-      reader: true
-    }
+    admin: false,
+    editor: false,
+    reader: true,
   }
   data2: UserInterface = this.data;
 

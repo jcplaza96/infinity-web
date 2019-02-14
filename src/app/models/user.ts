@@ -18,5 +18,8 @@ export interface UserInterface {
     phoneNumber?: string;
     password?: string;
     photoUrl?: string;
+    editor?: boolean;
+    admin?: boolean;
+    reader?: boolean;
     roles?: Roles;
 }
