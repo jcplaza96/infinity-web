@@ -67,6 +67,7 @@ export class FirebaseComponent implements OnInit {
     setTimeout(()=>{}, 20000);
     this.init();
     
+    
   //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
