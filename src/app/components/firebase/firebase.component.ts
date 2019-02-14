@@ -36,6 +36,7 @@ export class FirebaseComponent implements OnInit {
     name: '',
     surname1: '',
     surname2: '',
+    email: '',
     birthday: '',
     cp: '',
     country: '',
@@ -47,11 +48,13 @@ export class FirebaseComponent implements OnInit {
       reader: true
     }
   }
+  data2: UserInterface = this.data;
 
    action: string = "list";
    contenido: boolean;
    usuarios: boolean;
    isAdmin: any = null;
+   newUser: boolean = false;
 
 
   event: Event;
@@ -164,6 +167,7 @@ export class FirebaseComponent implements OnInit {
   }
 
   findUser(email) {
+    this.newUser=false;
     let aux;
     try {
       let ref = this.afs.collection("users", ref => ref.where("email", "==", email));
@@ -182,6 +186,27 @@ export class FirebaseComponent implements OnInit {
       });
     }
   }
+
+  createUser(password){
+      this.authService.registerUser(this.data2.email, password)
+      .then((res)=>{
+        var user = this.authService.getCurrentUser();
+        this.data2.id = user.uid;
+        user.updateProfile({
+          displayName: this.data2.name,
+          photoURL: '',
+        });
+        try{
+          const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+          userRef.set(this.data2, {merge:true});
+          alert("Usuario creado correctamente");
+        }catch(error){
+          alert("Error al crear el usuario: " + error);
+        }
+        this.router.navigate(['/']);
+      }).catch(err=> console.log('err', err.message));
+    }
+    
 
   ngOnDestroy() {
     this.fg.navBar.setBackgroundlight();
