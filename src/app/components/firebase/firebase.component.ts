@@ -43,7 +43,7 @@ export class FirebaseComponent implements OnInit {
     phoneNumber: '',
     admin: false,
     editor: false,
-    reader: true
+    reader: true,
   }
   data2: UserInterface = this.data;
 

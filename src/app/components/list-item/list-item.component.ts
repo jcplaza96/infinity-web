@@ -6,6 +6,9 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+declare var $: any;
+
+
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
@@ -26,12 +29,26 @@ export class ListItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.i.likes != undefined) {
-      this.numLikes = this.i.likes.length;
-    }
     this.getShortDescription();
     this.isLogged();
+    if(this.afAuth.auth.currentUser!=null){
+      this.comprobarLike();
+    }
     //console.log(document.getElementsByName("rating"));
+
+  }
+
+
+  comprobarLike() {
+    if (this.i.likes != undefined) {
+      this.numLikes = this.i.likes.length;
+      var index: number = this.i.likes.indexOf(this.afAuth.auth.currentUser.uid);
+      if (index != -1) {
+        this.liked = true;
+      }
+    } else {
+      this.i.likes = [];
+    }
   }
 
   toogleSeeMore() {
@@ -52,14 +69,14 @@ export class ListItemComponent implements OnInit {
     var btn = <HTMLButtonElement>document.getElementById(this.i.id);
     var user = this.afAuth.auth.currentUser;
     if (this.liked) {
-      btn.classList.add("coloredLike");
       this.i.likes.push(user.uid);
+      this.numLikes = this.i.likes.length;
     } else {
-      btn.classList.remove("coloredLike");
       const index: number = this.i.likes.indexOf(user.uid);
       if (index !== -1) {
         this.i.likes.splice(index, 1);
       }
+      this.numLikes = this.i.likes.length;
     }
     this.updateLikes();
   }
@@ -78,9 +95,8 @@ export class ListItemComponent implements OnInit {
     try {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${this.id}/${this.i.id}`);
       userRef.set(this.i, { merge: true });
-      alert("Usuario actualizado correctamente");
     } catch (error) {
-      alert("Error al actualizar el usuario: " + error);
+      alert("Error al actualizar la valoración: " + error);
     }
   }
 }
