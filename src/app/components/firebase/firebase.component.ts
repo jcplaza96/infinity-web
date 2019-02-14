@@ -14,6 +14,7 @@ export interface Item { description: string, image: string, tittle: string, orig
 import { AngularFireAuth } from "@angular/fire/auth";
 import { UserInterface } from '../../models/user'
 import { AuthService } from 'src/app/services/auth.service';
+import { initDomAdapter } from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'app-firebase',
@@ -25,26 +26,42 @@ export class FirebaseComponent implements OnInit {
   /**
    * Flags declaration
    */
-
+   action: string = "list";
    contenido: boolean;
    usuarios: boolean;
    isAdmin: any = null;
 
-  event: Event;
-  item;
 
+  event: Event;
+  SECTIONS: string[] = ['ninstalaciones','noticias','cursos'];
+  editableItem;
+  items: any[] = [];
   constructor(public router: Router, private fb : FirebaseService, private fbs: FirebaseStorageService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getCurrentUser();
     setTimeout(()=>{}, 20000);
+    this.init();
+    
   //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
+  init(){
+    this.SECTIONS.forEach(section => {
+      this.fb.getAllSection(section).subscribe(actions => {
+        actions.forEach(action => {
+          let id = action.payload.doc.id;
+          this.items.push({id,origen: section ,...action.payload.doc.data()});
+
+        })
+      })
+    });
+  }
+
   addItem(section: string,tittle: string,description: string, origen: string){
-    console.log("traza1");
+   
     //if(tittle != '' && description != ''){
-      console.log("Traza2");
+      
       this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
         res.ref.getDownloadURL().then(url => {
           this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
@@ -75,14 +92,12 @@ export class FirebaseComponent implements OnInit {
   //     }))
   //   );
 
-  getItem(section: string,title: string){ 
-    this.item = false;
-    let aux = this.fb.getItem(section,title);
-    if(aux != false){
-      aux.subscribe(actions => {
-        this.item = {id: actions[0].payload.doc.id, ...actions[0].payload.doc.data()}
-      });
-    }
+  getItem(id,section: string){ 
+    this.editableItem = false;
+    console.log(id);
+    this.fb.getItemById(section,id).subscribe(action => {
+      this.editableItem = {id: action.payload.id, section: section, ...action.payload.data()};
+    })
   }
 
   update(id,path,title,description){
@@ -92,7 +107,7 @@ export class FirebaseComponent implements OnInit {
 
   delete(id,path){
     this.fb.delete(id,path);
-    this.item = false;
+    this.editableItem = false;
   }
 
 
@@ -106,9 +121,8 @@ export class FirebaseComponent implements OnInit {
     })
   }
 
-  prueba(section: string,tittle: string,description: string, origen: string){
-    console.log(section);
-    console.log(tittle);
-    console.log(description);
+  editItem(id: string, section: string){
+    this.editableItem = false;
+    
   }
 }

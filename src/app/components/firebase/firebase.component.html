@@ -12,8 +12,8 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="row justify-content-center mt-1">
-          <form ngNativeValidate class="">
+        <div class="row justify-content-center mt-3">
+          <!-- <form ngNativeValidate class="">
             <label>Sección: </label><select #newsection class="ml-2">
               <option value="ninstalaciones">Instalaciones</option>
               <option value="noticias">Noticias</option>
@@ -31,7 +31,17 @@
               </span>
               <button type="submit" (click)="addItem(newsection.value,newtittle.value,newdescription.value,newsection.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
             </div>
-          </form>
+          </form> -->
+        <div class="col-md-5" id="scroll">
+          <div class=" card ml-4" *ngFor="let item of items">
+            <app-list-item [i]="item" (click)="getItem(item.id,item.origen)"></app-list-item>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div *ngIf="editableItem">
+            <app-editable-item [i]="this.editableItem"></app-editable-item>
+          </div>
+        </div>
         </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -51,8 +61,8 @@
         </div>
           <div class="row">
             <div class="col-3"></div>
-            <div *ngIf="item" class="col-6 mt-2 card">
-              <app-editable-item [i]=this.item [origen]=section.value></app-editable-item>         
+            <div *ngIf="editableItem" class="col-6 mt-2 card">
+              <app-editable-item [i]=this.editableItem ></app-editable-item>         
             </div>
             <div class="col-3"></div>
           </div>
