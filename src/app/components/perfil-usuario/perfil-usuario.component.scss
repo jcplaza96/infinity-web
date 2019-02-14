@@ -1,0 +1,59 @@
+@import "../../../assets/scss/variables.scss";
+
+$form-bg: #13232f;
+$thin: 300;
+
+#header{
+    height: 20vh;
+    // min-height: 188px !important;
+    // max-height: 220px;
+    @media only screen and (max-width: 992px) {
+      height: 18vh;
+  }
+}
+
+.container{
+	background: $fondo_footer;
+  padding: 40px;
+  margin:40px auto;
+  border-radius:4px;
+  box-shadow:0 4px 10px 4px rgba($form-bg,.3);
+}
+
+h3{
+	color:white;
+  font-weight:$thin;
+  margin:0 0 40px;
+}
+
+label{
+	color:white;
+}
+
+input, select{
+	color: white;
+	background-color: $fondo_footer;
+	border-radius:0;
+	border:1px solid rgba(white,.5);
+	&:focus {
+		background-color: $fondo_footer;
+		border-color: rgba(white,.5);
+		color:white;
+	}
+	&:active{
+		border-color: rgba(white,.5);
+	}
+	&:disabled{
+		background-color: $fondo_footer;
+		color:white;
+	}
+}
+
+#inputGroupPrepend{
+	color: white;
+	background-color: $fondo_footer;
+	border-color: rgba(white,.5);
+}
+
+
+

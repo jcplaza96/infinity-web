@@ -56,6 +56,7 @@ import { CookiesComponent } from './components/cookies/cookies.component';
 import { FormsModule } from '@angular/forms';
 import { AdminGuard } from './guards/admin.guard';
 import { EditableItemComponent } from './components/editable-item/editable-item.component';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 
 
 
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: 'jcgame', component: JuanCarlosComponent },
   { path: 'agame', component: AngelComponent },
   { path: 'login', component: LoginSignComponent },
+  { path: 'perfil', component: PerfilUsuarioComponent,  canActivate: [AuthGuard] },
   { path: 'admin', component: FirebaseComponent, canActivate: [AuthGuard , AdminGuard] },
   { path: '', component: SliderIndexComponent , pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
@@ -111,6 +113,7 @@ const routes: Routes = [
     LoginSignComponent,
     CookiesComponent,
     EditableItemComponent,
+    PerfilUsuarioComponent,
   ],
   imports: [
     BrowserModule,
