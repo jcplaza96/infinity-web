@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FuncionesGlobalesService } from 'src/app/services/funciones-globales.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from "@angular/router";
@@ -18,9 +18,15 @@ declare var $: any;
   templateUrl: './login-sign.component.html',
   styleUrls: ['./login-sign.component.scss']
 })
-export class LoginSignComponent implements OnInit {
+export class LoginSignComponent implements OnInit, AfterViewInit {
   target: any;
-  
+  code: string;
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+      this.Captcha();
+  }
+
   onSubmit(f: NgForm){
     alert("hola");
   }
@@ -31,8 +37,8 @@ export class LoginSignComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  register(email, password, name, apellido1, apellido2, fecha, cp, pais, telefono, captcha){
-    if(this.comprobarCaptcha(captcha) && this.comprobarPassword(password)){
+  register(email, password, name, apellido1, apellido2, fecha, cp, pais, telefono, captcha: string){
+    if(this.comprobarCaptcha(captcha.toLowerCase()) && this.comprobarPassword(password)){
       this.authService.registerUser(email, password)
       .then((res)=>{
         var user = this.authService.getCurrentUser();
@@ -55,7 +61,7 @@ export class LoginSignComponent implements OnInit {
   }
 
   comprobarCaptcha(captcha){
-    if(captcha=="V4XBG"){
+    if(captcha==this.code.toLowerCase()){
       return true;
     }else{
       alert("Captcha incorrecto");
@@ -70,7 +76,7 @@ export class LoginSignComponent implements OnInit {
     regex.push("[A-Z]"); //Uppercase Alphabet.
     regex.push("[a-z]"); //Lowercase Alphabet.
     regex.push("[0-9]"); //Digit.
-    regex.push("[!@#$%^&*]"); //Special Character.
+    regex.push("[!@#$%^&*.]"); //Special Character.
 
     var passed = 0;
     for (var i = 0; i < regex.length; i++) {
@@ -167,4 +173,65 @@ export class LoginSignComponent implements OnInit {
 
     });
   }
+
+
+  Captcha() {
+    var alpha1 = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '# ', ',', '.', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '"', ':', ';', '/', '?', '<', '>', '|');
+    var alpha3 = new Array('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+    var i;
+    for (i = 0; i < 6; i++) {
+        var a = alpha1[Math.floor(Math.random() * alpha1.length)];
+        var b = alpha1[Math.floor(Math.random() * alpha1.length)];
+        var c = alpha3[Math.floor(Math.random() * alpha3.length)];
+        var d = alpha1[Math.floor(Math.random() * alpha1.length)];
+        var e = alpha1[Math.floor(Math.random() * alpha1.length)];
+        var f = alpha3[Math.floor(Math.random() * alpha3.length)];
+        var g = alpha1[Math.floor(Math.random() * alpha1.length)];
+    }
+    this.code = a + b + c + d + e + f + g;
+    this.CreaIMG(this.code);
+}
+
+removeSpaces(string) {
+    return string.split(' ').join('');
+}
+
+CreaIMG(texto) {
+  //@ts-ignore
+    var ctxCanvas = document.getElementById('captchaCanvas').getContext('2d');
+    var fontSize = "30px";
+    var fontFamily = "Arial";
+    var width = 250;
+    var height = 50;
+    //tamaño
+    ctxCanvas.canvas.width = width;
+    ctxCanvas.canvas.height = height;
+    //color de fondo
+    ctxCanvas.fillStyle = "whitesmoke";
+    ctxCanvas.fillRect(0, 0, width, height);
+    //puntos de distorsion
+    ctxCanvas.setLineDash([7, 10]);
+    ctxCanvas.lineDashOffset = 5;
+    ctxCanvas.beginPath();
+    var line;
+    for (var i = 0; i < (width); i++) {
+        line = i * 5;
+        ctxCanvas.moveTo(line, 0);
+        ctxCanvas.lineTo(0, line);
+    }
+    ctxCanvas.stroke();
+    //formato texto
+    ctxCanvas.direction = 'ltr';
+    ctxCanvas.font = fontSize + " " + fontFamily;
+    //texto posicion
+    var x = (width / 9);
+    var y = (height / 3) * 2;
+    //color del borde del texto
+    ctxCanvas.strokeStyle = "yellow";
+    ctxCanvas.strokeText(texto, x, y);
+    //color del texto
+    ctxCanvas.fillStyle = "red";
+    ctxCanvas.fillText(texto, x, y);
+    console.log(this.code);
+}
 }

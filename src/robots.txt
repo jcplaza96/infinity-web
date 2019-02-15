@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://infweb-721e9.firebaseapp.com/sitemap.xml
