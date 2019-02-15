@@ -36,7 +36,11 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     if(!this.getCookie("notificacion")) {
       this.notificacion = true;
+      console.log("Notificación activa");
+      console.log(this.getCookie("notificacion"));
+
     }
+    console.log(this.getCookie("notificacion"));
     
     this.isLogged();
   }

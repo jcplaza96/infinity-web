@@ -26,10 +26,10 @@
     </ul>
   </div>
   <div class="form-inline my-2 my-lg-0 d-flex">
-    <span id="bienvenido" *ngIf='logged' class="nav-link texto-titulo">Bienvenido {{userName}}</span>
+    <span id="bienvenido" *ngIf='logged' class="nav-link texto-titulo">{{userName}}</span>
 
     <!-- Inicio cookie notificación -->
-    <li id="notificacion" class="nav-item dropleft" routerLinkActive="active">
+    <li *ngIf="notificacion"  id="notificacion" class="nav-item dropleft" routerLinkActive="active">
       <div id="centrar" class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a id="aceptaCookieNotificacion" class="texto-subtitulos" data-toggle="collapse">Nuevas noticias</a><br>
         <button type="button" class="btn btn-danger" (click)="quitarnotificacion()" [routerLink]="['/noticias']">Ir a noticias</button>
