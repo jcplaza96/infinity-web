@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { updateBinding } from '@angular/core/src/render3/instructions';
 
 declare var $: any;
 
@@ -78,7 +79,7 @@ export class ListItemComponent implements OnInit {
       }
       this.numLikes = this.i.likes.length;
     }
-    this.updateLikes();
+    //this.updateLikes();
   }
 
   isLogged() {
@@ -91,10 +92,13 @@ export class ListItemComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.updateLikes();
+  }
+
   updateLikes() {
     try {
-      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${this.id}/${this.i.id}`);
-      userRef.set(this.i, { merge: true });
+      this.afs.collection(this.id).doc(this.i.id).update({likes: this.i.likes});
     } catch (error) {
       alert("Error al actualizar la valoración: " + error);
     }

@@ -42,7 +42,7 @@ export class LoginSignComponent implements OnInit {
         });
         this.updateUserData(user, name, apellido1, apellido2, fecha, cp, pais, telefono);
         this.router.navigate(['/']);
-      }).catch(err=> console.log('err', err.message));
+      }).catch(err=> alert(err.message));
     }
     
   }
@@ -51,7 +51,7 @@ export class LoginSignComponent implements OnInit {
     this.authService.loginEmailUser(email, password)
     .then((res)=>{
       this.router.navigate(['/']);
-    }).catch(err=> console.log('err', err.message));
+    }).catch(err=> alert(err.message));
   }
 
   comprobarCaptcha(captcha){
@@ -92,7 +92,7 @@ export class LoginSignComponent implements OnInit {
     this.authService.loginGoogleUser()
       .then((res)=>{
         this.router.navigate(['/']);
-      }).catch(err=> console.log('err', err.message));
+      }).catch(err=> alert(err.message));
   }
 
   ngOnInit() {
