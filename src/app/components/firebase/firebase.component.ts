@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FirebaseService, Item } from 'src/app/services/firebase.service';
 import { fbind } from 'q';
 import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/template';
@@ -6,7 +6,7 @@ import { stringify } from '@angular/core/src/util';
 import { FirebaseStorageService } from '../../services/storage/firebase-storage.service';
 import { map } from 'rxjs/operators';
 import { Router } from "@angular/router";
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 export interface Item { description: string, image: string, tittle: string, origen?: string; }
 
@@ -25,7 +25,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
   templateUrl: './firebase.component.html',
   styleUrls: ['./firebase.component.scss']
 })
-export class FirebaseComponent implements OnInit {
+export class FirebaseComponent implements OnInit, AfterViewInit {
 
   /**
    * Flags declaration
@@ -47,6 +47,7 @@ export class FirebaseComponent implements OnInit {
   }
   data2: UserInterface = this.data;
 
+   newd: string;
    action: string = "list";
    contenido: boolean;
    usuarios: boolean;
@@ -71,7 +72,15 @@ export class FirebaseComponent implements OnInit {
   //  console.log(this.authService.afAuth.auth.currentUser.metadata);
   }
   
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+
+    
+  }
+
   init(){
+    this.editableItem = false;
     this.items = [];
     this.SECTIONS.forEach(section => {
       this.fb.getAllSection(section).subscribe(actions => {
@@ -85,7 +94,6 @@ export class FirebaseComponent implements OnInit {
 
   addItem(section: string,tittle: string,description: string, origen: string){
    
-      
       this.fbs.uploadFile(this.event,origen).toPromise().then(res => {
         res.ref.getDownloadURL().then(url => {
           this.fb.addItem(section,{description: description,tittle: tittle, image: url, origen: origen});
@@ -129,6 +137,7 @@ export class FirebaseComponent implements OnInit {
   update(id,path,title,description){
   //    console.log(description);
     this.fb.update(id,path,{tittle: title,description: description});
+    this.editableItem = false;
   }
 
   delete(id,path){
@@ -148,9 +157,9 @@ export class FirebaseComponent implements OnInit {
   }
 
   createNewItem(){
+
     this.newItem = true;
     this.editableItem = null;
-    
   }
 
   updateUser(uid) {

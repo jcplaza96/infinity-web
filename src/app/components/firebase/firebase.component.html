@@ -12,25 +12,7 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <div class="row justify-content-center mt-3">
-      <!-- <form ngNativeValidate class="">
-            <label>Sección: </label><select #newsection class="ml-2">
-              <option value="ninstalaciones">Instalaciones</option>
-              <option value="noticias">Noticias</option>
-              <option value="cursos">Cursos</option>
-            </select> <br>
-            <label class="mt-2">Título: </label><input class="ml-2" type="text" #newtittle required> <br>
-            
-            <label class="mt-2">Descripción:</label><br><textarea rows="4" cols="50" type="text" #newdescription required></textarea> <br>
-            <div class="container-fluid mt-4">
-              <span class="nuestroinput">
-                <label for="nuestroinput"><i class="fas fa-upload"></i><span class="nuestroinput" id="mensaje"> Requiere imagen</span></label><br>     
-              </span>
-              <span class="nuestroinput">
-                <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
-              </span>
-              <button type="submit" (click)="addItem(newsection.value,newtittle.value,newdescription.value,newsection.value)"  class="btn btn-danger mt-1" false>Crear nuevo</button> 
-            </div>
-          </form> -->
+      
       <div class="col-md-5" id="scroll">
         <div class=" card ml-4" *ngFor="let item of items">
           <app-list-item [i]="item" (click)="getItem(item.id,item.origen)"></app-list-item>
@@ -53,7 +35,8 @@
               <label class="mt-2">Título: </label><input class="form-control" type="text" #newtittle required>
             </div>
             <div class="form-group">
-              <label class="mt-2">Descripción:</label><br><div id="quill"  type="text" #newdescription></div>
+              <label class="mt-2">Descripción:</label><br><editor name="newd" [(ngModel)]="newd" apiKey="test" [init]="{plugins: 'link'}"  #newdescription></editor>
+              <div id="prueba"></div>
             </div>
             <div class="container-fluid mt-4">
               <span class="nuestroinput">
@@ -64,7 +47,7 @@
                 <input id="nuestroinput" type="file" (change)="getFile($event)" required><br>
               </span>
               <button type="submit"
-                (click)="addItem(newsection.value,newtittle.value,newdescription.value,newsection.value)"
+                (click)="addItem(newsection.value,newtittle.value,newd,newsection.value)"
                 class="btn btn-danger mt-1" false>Añadir artículo</button>
             </div>
           </form>
@@ -738,11 +721,7 @@
     </form>
   </div>
 </div>
-
-
+<link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
 <script>
-    var quill = new Quill(document.getElementById('quill'), {
-      placeholder: 'Compose an epic...',
-      theme: 'bubble'
-    });
+
 </script>

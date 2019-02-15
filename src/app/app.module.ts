@@ -57,6 +57,7 @@ import { FormsModule } from '@angular/forms';
 import { AdminGuard } from './guards/admin.guard';
 import { EditableItemComponent } from './components/editable-item/editable-item.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 
@@ -123,7 +124,8 @@ const routes: Routes = [
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireModule.initializeApp(environment.firebase),
-    FormsModule
+    FormsModule,
+    EditorModule
   ],
   providers: [ FirebaseService,FirebaseStorageService,FuncionesGlobalesService ],
   bootstrap: [AppComponent]
