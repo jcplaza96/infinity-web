@@ -36,7 +36,9 @@ export class ListItemComponent implements OnInit {
       this.comprobarLike();
     }
     //console.log(document.getElementsByName("rating"));
-
+    console.log(this.id);
+    console.log(this.i);
+    console.log("----------------------------------");
   }
 
 

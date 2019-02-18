@@ -18,13 +18,13 @@ export class RecursosComponent implements OnInit {
   constructor(private conexion: FirebaseService) { }
 
   ngOnInit() {
-    this.parents.forEach(element => {
-      //console.log(element);
-      this.conexion.listaItem(element).subscribe(item => {
-        this.rows[element] = item;
-      });
-      console.log(this.parents);
-    });
+    // this.parents.forEach(element => {
+    //   //console.log(element);
+    //   this.conexion.listaItem(element).subscribe(item => {
+    //     this.rows[element] = item;
+    //   });
+    //   console.log(this.parents);
+    // });
   }
   
   consola(){

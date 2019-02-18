@@ -15,7 +15,7 @@
       
       <div class="col-md-5" id="scroll">
         <div class=" card ml-4" *ngFor="let item of items">
-          <app-list-item [i]="item" (click)="getItem(item.id,item.origen)"></app-list-item>
+          <app-list-item [i]="item" [id]="item.origen" (click)="getItem(item.id,item.origen)" ></app-list-item>
         </div>
       </div>
       <div class="col-md-7">
