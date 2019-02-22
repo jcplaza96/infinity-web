@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
   black: boolean = false;
   notificacion: boolean = false;
   isAdmin: any = null;
+  movil:boolean = false;
 
 
 
@@ -41,6 +42,10 @@ export class NavBarComponent implements OnInit {
 
     }
     console.log(this.getCookie("notificacion"));
+    if(window.innerWidth<992){
+      this.movil = true;
+      
+    }
     
     this.isLogged();
   }
@@ -119,6 +124,17 @@ export class NavBarComponent implements OnInit {
     this.setCookie("notificacion", true, 30);
     //this.notificacion = false;
     document.getElementById("notificacion").style.display = "none";
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    if(window.innerWidth>=992){
+      this.movil = false;
+    }
+    if(window.innerWidth<992){
+      this.movil = true;
+      
+    }
   }
 
 }

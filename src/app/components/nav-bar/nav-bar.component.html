@@ -11,7 +11,7 @@
         <a class="nav-link texto-titulo" data-toggle="collapse" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown" routerLinkActive="active">
-        <a class="nav-link dropdown-toggle texto-titulo btn" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle texto-titulo btn" id="navbarDropdown" role="button" data-toggle="dropdown" href="" aria-haspopup="true" aria-expanded="false">
           Servicios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -40,13 +40,13 @@
 
     <a class="navbar-brand ml-1" *ngIf="!logged" [routerLink]="['/login']"><img src="/assets/img/logo-login.png" width="40px"></a>
     
-    <li class="nav-item dropdown" *ngIf="logged" routerLinkActive="active">
-      <a class="nav-link ml-1 dropdown-toggle texto-titulo btn" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/img/logo-login.png" width="40px"></a>
+    <li class="nav-item dropdown" *ngIf="logged" >
+      <a class="nav-link ml-1 dropdown-toggle texto-titulo btn" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/img/logo-login.png" width="40px"></a>
       <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item texto-subtitulos btn" data-toggle="collapse" [routerLink]="['/perfil']">Perfil</a>
-        <a *ngIf="isAdmin" class="dropdown-item texto-subtitulos btn" data-toggle="collapse" [routerLink]="['/admin']">Administrador</a>
+        <a class="dropdown-item texto-subtitulos btn" data-toggle="collapse" routerLinkActive="active" [routerLink]="['/perfil']">Perfil</a>
+        <a *ngIf="isAdmin" class="dropdown-item texto-subtitulos btn" data-toggle="collapse" routerLinkActive="active" [routerLink]="['/admin']">Administrador</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item texto-subtitulos btn" (click)='logout()' data-toggle="collapse">Cerrar sesión</a>
+        <a class="dropdown-item texto-subtitulos btn" (click)='logout()' href="" data-toggle="collapse">Cerrar sesión</a>
       </div>
     </li>
   </ul>
@@ -54,7 +54,7 @@
 </nav>
 <!--Fin navBar-->
 
-<div id="myNav" class="overlay">
+<div id="myNav" class="overlay" *ngIf="movil">
 
     <!-- Button to close the overlay navigation -->
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
@@ -66,7 +66,7 @@
         <a (click)="closeNav()" data-toggle="collapse" [routerLink]="['/']">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li >
-        <a (click)="toggleDropDown()">Servicios</a>
+        <a (click)="toggleDropDown()" href="">Servicios</a>
         <div *ngIf="showDropDown">
           <hr>
             <li>
