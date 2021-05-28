@@ -32,7 +32,7 @@
     "firebase": "^5.7.0",
     "path": "^0.12.7",
     "rxjs": "~6.3.3",
-    "tinymce": "^5.0.0",
+    "tinymce": "^5.7.1",
     "typescript": "~3.1.6",
     "zone.js": "~0.8.26"
   },
